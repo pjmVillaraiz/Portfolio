@@ -1,12 +1,11 @@
 /* ============================
-   DARK MODE TOGGLE (WORKING)
+   DARK MODE TOGGLE
 ============================ */
 const toggleButton = document.getElementById('theme-toggle-button');
 const body = document.body;
 
 toggleButton.addEventListener('click', () => {
     body.classList.toggle('dark');
-
     if (body.classList.contains('dark')) {
         toggleButton.innerHTML = '<span class="icon">🌞</span> SWITCH TO LIGHT MODE';
     } else {
@@ -28,7 +27,6 @@ uploadPic.addEventListener("change", function () {
     reader.onload = e => {
         profileImg.src = e.target.result;
     };
-
     reader.readAsDataURL(file);
 });
 
