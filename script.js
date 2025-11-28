@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Handle Profile Picture Upload ---
+    // --- 1. Profile Picture Upload (Logic remains the same) ---
     const uploadPicInput = document.getElementById('upload-pic');
     const profileImg = document.getElementById('profile-img');
-    const profileFrame = document.querySelector('.profile-frame'); // The main clickable area
+    const profileFrame = document.querySelector('.profile-frame'); 
 
-    // Attach click listener to the entire frame
     profileFrame.addEventListener('click', () => {
         uploadPicInput.click();
     });
@@ -17,37 +16,66 @@ document.addEventListener('DOMContentLoaded', () => {
                 profileImg.src = e.target.result;
             }
             reader.readAsDataURL(file);
-            alert('Profile picture uploaded successfully! (Note: This is only a local preview)');
+            console.log('Profile picture loaded locally.');
         }
     });
 
-    // --- 2. Handle PDF and Certificate Uploads (Simulated) ---
-    const uploadPdfInput = document.getElementById('upload-pdf');
-    const uploadCertInput = document.getElementById('upload-cert');
+    // --- 2. File Uploads (PDF/Certificates) ---
+    const uploadPdfInput = document.getElementById('upload-pdf'); // Achievement PDF/Image
+    const uploadResumeInput = document.getElementById('upload-resume'); // General Resume PDF
+    const uploadCertPicInput = document.getElementById('upload-cert-pic'); // Picture Certs
+
     const certificatesList = document.getElementById('certificates-list');
 
-    uploadPdfInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            alert(`PDF File Uploaded: ${file.name}. You can now process this file via a server-side script!`);
-            event.target.value = null; // Clear the input
-        }
+    function handleFileUpload(inputElement, sectionName) {
+        inputElement.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (sectionName === 'Achievement') {
+                     // Simulate adding the certificate/achievement to the list
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<span class="skull-icon">😈</span> Uploaded: ${file.name} (Type: ${file.type.split('/')[0]})`;
+                    certificatesList.appendChild(listItem);
+                }
+                alert(`SUCCESS! ${sectionName} File Uploaded: ${file.name}.`);
+                event.target.value = null; // Clear the input
+            }
+        });
+    }
+
+    handleFileUpload(uploadPdfInput, 'Achievement');
+    handleFileUpload(uploadResumeInput, 'Resume');
+    handleFileUpload(uploadCertPicInput, 'Certificate Picture');
+
+
+    // --- 3. Handle Project Submission (Title, Description, Link) ---
+    const addProjectForm = document.getElementById('add-project-form');
+    const projectsList = document.getElementById('projects-list');
+
+    addProjectForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('project-title').value;
+        const description = document.getElementById('project-description').value;
+        const link = document.getElementById('project-link').value;
+
+        // Create the new project HTML element
+        const newProjectItem = document.createElement('div');
+        newProjectItem.classList.add('project-item');
+        newProjectItem.innerHTML = `
+            <p><strong>• ${title}:</strong> ${description}</p>
+            <a href="${link}" target="_blank">View Project Link</a>
+        `;
+
+        // Add the new project to the list at the top
+        projectsList.prepend(newProjectItem);
+
+        // Clear the form
+        addProjectForm.reset();
+        alert(`New Project Added: "${title}"`);
     });
 
-    uploadCertInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            // Simulate adding the certificate to the list
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span class="skull-icon">💀</span> Certificate Added: ${file.name}`;
-            certificatesList.appendChild(listItem);
-            
-            alert(`Certificate Picture Uploaded: ${file.name}. Added to achievements list!`);
-            event.target.value = null; // Clear the input
-        }
-    });
-
-    // --- 3. Simple Customization/Dark Mode Toggle ---
+    // --- 4. Simple Customization/Dark Mode Toggle (Optional) ---
     const customizeButton = document.querySelector('.customize-button');
 
     customizeButton.addEventListener('click', () => {
