@@ -26,14 +26,10 @@
                 <!-- Achievements Section -->
                 <div class="section-box achievements-section">
                     <h2>Achievements/Certifications</h2>
-                    
-                    <div class="achievement-controls">
-                        <label for="upload-pdf" class="kuromi-button pdf-button">
-                            <span class="icon">📄</span> Upload Achievement PDF/Image
-                        </label>
-                        <input type="file" id="upload-pdf" accept=".pdf, image/*" class="hidden-input">
-                    </div>
-
+                    <label for="upload-pdf" class="kuromi-button pdf-button">
+                        <span class="icon">📄</span> Upload Achievement PDF/Image
+                    </label>
+                    <input type="file" id="upload-pdf" class="hidden-input" accept=".pdf, image/*">
                     <ul id="certificates-list"></ul>
                 </div>
 
@@ -44,24 +40,22 @@
                     <form id="add-project-form">
                         <input type="text" id="project-title" placeholder="Project Title" required>
                         <textarea id="project-description" placeholder="Project Description" required></textarea>
-                        <input type="url" id="project-link" placeholder="Project Link (GitHub/Demo URL)" required>
+                        <input type="url" id="project-link" placeholder="Project Link" required>
                         <button type="submit" class="add-project-button">Add Project ➕</button>
                     </form>
 
                     <div id="projects-list"></div>
-                    <a href="#" class="view-all-link">View All Projects</a>
                 </div>
 
             </section>
 
-            <!-- Profile Column -->
             <section class="profile-column">
                 <div class="profile-picture-container">
                     <div class="profile-frame">
                         <img id="profile-img" src="default-kuromi-icon.png" alt="Profile Picture">
                         <div class="upload-pic-overlay">Upload Profile Picture</div>
                     </div>
-                    <input type="file" id="upload-pic" accept="image/*" class="hidden-input">
+                    <input type="file" id="upload-pic" class="hidden-input" accept="image/*">
                 </div>
             </section>
         </main>
