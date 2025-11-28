@@ -1,14 +1,16 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Princess Jelyn Mae Villaraiz - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Princess Jelyn Mae Villaraiz</h1>
+        <p class="tagline">✨ Anime Enthusiast | Full-Stack Developer | Creative Coder ✨</p>
         
         <div class="profile-section">
             <img id="profilePreview" class="profile placeholder" src="" alt="Profile Picture">
@@ -19,10 +21,50 @@
             </div>
         </div>
         
-        <p class="course-info">BSIT — 1st Year</p>
+        <p class="course-info">BSIS — 2nd Year 💻</p>
     </div>
 
-    <!-- Certificates -->
+    <!-- About Me / Personality -->
+    <div class="section">
+        <h2>About Me</h2>
+        <div class="personality-grid">
+            <div class="personality-card">
+                <div class="icon">🎌</div>
+                <h3>Anime Lover</h3>
+                <p>I'm passionate about anime and manga. I love exploring different genres and characters that inspire my creative projects.</p>
+            </div>
+            <div class="personality-card">
+                <div class="icon">💻</div>
+                <h3>Code Enthusiast</h3>
+                <p>Coding is my passion! I love solving problems through programming and creating innovative applications that make a difference.</p>
+            </div>
+            <div class="personality-card">
+                <div class="icon">🚀</div>
+                <h3>Industry Experience</h3>
+                <p>I bring real-world experience from my work in the tech industry, applying practical knowledge to my academic projects.</p>
+            </div>
+            <div class="personality-card">
+                <div class="icon">🌟</div>
+                <h3>Creative Developer</h3>
+                <p>I blend creativity with technical skills to build beautiful, functional applications that users love.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+        <h2>Previous Projects & Code</h2>
+        <div class="upload-area">
+            <label for="projUpload" class="file-label">Choose Files 🖼️</label>
+            <input type="file" id="projUpload" accept="image/*" multiple>
+            <button onclick="addProjects()">Upload Projects</button>
+        </div>
+        <div id="projContainer" class="grid">
+            <div class="empty-state">No projects uploaded yet</div>
+        </div>
+    </div>
+
+    <!-- Achievements & Certifications -->
     <div class="section">
         <h2>Achievements / Certifications</h2>
         <div class="upload-area">
@@ -32,19 +74,6 @@
         </div>
         <div id="certContainer" class="grid">
             <div class="empty-state">No certificates uploaded yet</div>
-        </div>
-    </div>
-
-    <!-- Projects -->
-    <div class="section">
-        <h2>Previous Projects</h2>
-        <div class="upload-area">
-            <label for="projUpload" class="file-label">Choose Files 🖼️</label>
-            <input type="file" id="projUpload" accept="image/*" multiple>
-            <button onclick="addProjects()">Upload Projects</button>
-        </div>
-        <div id="projContainer" class="grid">
-            <div class="empty-state">No projects uploaded yet</div>
         </div>
     </div>
 
