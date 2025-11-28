@@ -14,8 +14,7 @@
             <div class="header-kuromi-graphic"></div>
             <h1><span id="student-name">PRINCESS JELYN MAE S. VILLARAIZ</span></h1>
             <p class="subtitle">BSIS 2nd Year</p>
-            
-            <!-- FIXED BUTTON ID -->
+
             <button id="theme-toggle-button" class="kuromi-button customize-button" type="button">
                 <span class="icon">🌙</span> SWITCH TO DARK MODE
             </button>
@@ -23,7 +22,8 @@
 
         <main class="container">
             <section class="content-column">
-                
+
+                <!-- Achievements Section -->
                 <div class="section-box achievements-section">
                     <h2>Achievements/Certifications</h2>
                     
@@ -37,12 +37,13 @@
                     <ul id="certificates-list"></ul>
                 </div>
 
+                <!-- Projects Section -->
                 <div class="section-box projects-section">
                     <h2>Previous Projects</h2>
 
                     <form id="add-project-form">
                         <input type="text" id="project-title" placeholder="Project Title" required>
-                        <textarea id="project-description" placeholder="Project Description (e.g., Developed a Web-based Inventory System using PHP and MySQL)" required></textarea>
+                        <textarea id="project-description" placeholder="Project Description" required></textarea>
                         <input type="url" id="project-link" placeholder="Project Link (GitHub/Demo URL)" required>
                         <button type="submit" class="add-project-button">Add Project ➕</button>
                     </form>
@@ -50,23 +51,21 @@
                     <div id="projects-list"></div>
                     <a href="#" class="view-all-link">View All Projects</a>
                 </div>
+
             </section>
 
+            <!-- Profile Column -->
             <section class="profile-column">
-
                 <div class="profile-picture-container">
                     <div class="profile-frame">
                         <img id="profile-img" src="default-kuromi-icon.png" alt="Profile Picture">
                         <div class="upload-pic-overlay">Upload Profile Picture</div>
                     </div>
-                    <label for="upload-pic" class="hidden-upload-label"></label>
                     <input type="file" id="upload-pic" accept="image/*" class="hidden-input">
                 </div>
-
-                <!-- REMOVED résumé upload -->
             </section>
         </main>
-        
+
         <footer class="dock">
             <div class="dock-item">Home</div>
             <div class="dock-item">Projects</div>
