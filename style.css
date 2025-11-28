@@ -1,4 +1,7 @@
-/* DARK MODE ACTIVE */
+/* ============================
+   DARK MODE THEME
+============================ */
+
 body.dark {
     --kuromi-light-bg: #111111;
     --kuromi-section-bg: #1f1f1f;
