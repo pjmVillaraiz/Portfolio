@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuromi BSIS Profile</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="page-border">
         <header class="header">
             <div class="header-kuromi-graphic"></div>
-            <h1><span id="student-name">Princess Jelyn Mae S. Villaraiz</span></h1>
+            <h1><span id="student-name">PRINCESS JELYN MAE S. VILLARAIZ</span></h1>
             <p class="subtitle">BSIS 2nd Year</p>
         </header>
 
@@ -21,20 +21,38 @@
                 
                 <div class="section-box achievements-section">
                     <h2>Achievements/Certifications</h2>
+                    
+                    <div class="achievement-controls">
+                         <label for="upload-pdf" class="kuromi-button pdf-button">
+                            <span class="icon">📄</span> Upload Achievement PDF/Image
+                        </label>
+                        <input type="file" id="upload-pdf" accept=".pdf, image/*" class="hidden-input">
+                    </div>
+
                     <ul id="certificates-list">
-                        <li><span class="skull-icon">💀</span> Achievement 1</li>
-                        <li><span class="skull-icon">💀</span> Achievement 2</li>
-                        <li><span class="skull-icon">💀</span> Achievement 3 💀</li>
+                        <li><span class="skull-icon">😈</span> Achievement 1</li>
+                        <li><span class="skull-icon">😈</span> Achievement 2</li>
+                        <li><span class="skull-icon">😈</span> Achievement 3 </li>
                     </ul>
                 </div>
 
                 <div class="section-box projects-section">
                     <h2>Previous Projects</h2>
+
+                    <form id="add-project-form">
+                        <input type="text" id="project-title" placeholder="Project Title" required>
+                        <textarea id="project-description" placeholder="Project Description" required></textarea>
+                        <input type="url" id="project-link" placeholder="Project Link (GitHub/Demo)" required>
+                        <button type="submit" class="add-project-button">Add Project ➕</button>
+                    </form>
+                    
                     <div id="projects-list">
-                        <p>• Project 1</p>
-                        <p>• Project 2</p>
-                        <p>• Project 3 💀</p>
+                        <div class="project-item">
+                            <p><strong>• Project 1:</strong> System Design Documentation</p>
+                            <a href="#" target="_blank">View Link</a>
+                        </div>
                     </div>
+                    
                     <a href="#" class="view-all-link">View All Projects</a>
                 </div>
             </section>
@@ -45,24 +63,23 @@
                         <img id="profile-img" src="default-kuromi-icon.png" alt="Profile Picture">
                         <div class="upload-pic-overlay">Upload Profile Picture</div>
                     </div>
-                    
                     <label for="upload-pic" class="hidden-upload-label"></label>
                     <input type="file" id="upload-pic" accept="image/*" class="hidden-input">
                 </div>
 
                 <div class="upload-controls">
-                    <label for="upload-pdf" class="kuromi-button pdf-button">
-                        <span class="icon">📄</span> Upload PDF Resume
+                    <label for="upload-resume" class="kuromi-button resume-button">
+                        <span class="icon">📃</span> UPLOAD PDF RESUME
                     </label>
-                    <input type="file" id="upload-pdf" accept=".pdf" class="hidden-input">
+                    <input type="file" id="upload-resume" accept=".pdf" class="hidden-input">
                     
-                    <label for="upload-cert" class="kuromi-button cert-button">
-                        <span class="icon">📸</span> Upload Picture Certificate(s)
+                    <label for="upload-cert-pic" class="kuromi-button cert-button">
+                        <span class="icon">📸</span> UPLOAD PICTURE CERTIFICATE(S)
                     </label>
-                    <input type="file" id="upload-cert" accept="image/*" class="hidden-input">
+                    <input type="file" id="upload-cert-pic" accept="image/*" class="hidden-input">
                     
                     <button class="kuromi-button customize-button">
-                        <span class="icon">💅</span> Customize Theme
+                        <span class="icon">🎨</span> CUSTOMIZE THEME
                     </button>
                 </div>
             </section>
