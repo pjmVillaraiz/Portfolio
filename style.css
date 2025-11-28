@@ -1,30 +1,127 @@
-/* Default Light Theme */
+:root {
+    --bg: #fff8d6; 
+    --text: #1a1a1a;
+    --muted: #555;
+    --card: #ffffff;
+    --accent: #ffe28a;
+
+    /* Dark Mode */
+    --bg-dark: #1e1e1e;
+    --text-dark: #f5f5f5;
+    --card-dark: #2a2a2a;
+}
+
+/* GENERAL PAGE STYLE */
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f5f5f5;
-	color: #333;
-	margin: 0;
-	padding: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    transition: 0.3s ease;
 }
 
-header {
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-#profile-img {
-	width: 150px;
-	border-radius: 50%;
-}
-
-button {
-	padding: 10px 20px;
-	margin-top: 10px;
-	cursor: pointer;
-}
-
-/* Dark Theme */
+/* DARK THEME */
 body.dark {
-	background-color: #121212;
-	color: #f5f5f5;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+body.dark .left-section {
+    background: var(--card-dark);
+}
+
+body.dark a {
+    color: #ffdd8a;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin: 10px 0;
+    box-shadow: 0 0 10px #00000020;
+}
+
+/* THEME SWITCH BUTTON */
+.switch-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.switch-btn:hover {
+    background: #444;
+}
+
+body.dark .switch-btn {
+    background: #ffe393;
+    color: black;
+}
+
+/* PAGE LAYOUT */
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+/* LEFT COLUMN CONTENT */
+.left-section {
+    width: 40%;
+    padding: 30px;
+    background: var(--card);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000020;
+    transition: 0.3s;
+}
+
+.left-section h2 {
+    margin-top: 10px;
+}
+
+/* LISTS */
+ul {
+    margin-left: -10px;
+    line-height: 1.7;
+}
+
+a {
+    color: #c29000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* EMPTY RIGHT SIDE */
+.right-space {
+    width: 55%; /* matches your screenshot */
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
