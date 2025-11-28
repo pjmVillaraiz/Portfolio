@@ -1,30 +1,76 @@
-/* Default Light Theme */
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f5f5f5;
-	color: #333;
-	margin: 0;
-	padding: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1b1b1b;
+    color: white;
+    background-image: url('https://i.imgur.com/8w08YcF.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-header {
-	text-align: center;
-	margin-bottom: 30px;
+.container {
+    text-align: center;
+    padding: 40px;
+    backdrop-filter: blur(5px);
 }
 
-#profile-img {
-	width: 150px;
-	border-radius: 50%;
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ff6ec7;
+}
+
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ff6ec7;
+}
+
+.upload-box {
+    margin-top: 10px;
+}
+
+.section {
+    text-align: left;
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    border: 2px solid #ff6ec7;
+}
+
+h2 {
+    color: #ff6ec7;
 }
 
 button {
-	padding: 10px 20px;
-	margin-top: 10px;
-	cursor: pointer;
+    padding: 10px 20px;
+    background-color: #ff6ec7;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-/* Dark Theme */
-body.dark {
-	background-color: #121212;
-	color: #f5f5f5;
+button:hover {
+    background-color: #ffa8e9;
+}
+
+/* Grid for certificate & project previews */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.grid img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #ff6ec7;
 }
