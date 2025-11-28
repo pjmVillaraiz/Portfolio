@@ -112,16 +112,11 @@ a:hover {
 
 /* EMPTY RIGHT SIDE */
 .right-space {
-    width: 55%; /* matches your screenshot */
+    width: 55%;
 }
 
 /* ANIMATIONS */
 @keyframes fadeUp {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }
