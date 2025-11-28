@@ -15,6 +15,7 @@
             <h1><span id="student-name">PRINCESS JELYN MAE S. VILLARAIZ</span></h1>
             <p class="subtitle">BSIS 2nd Year</p>
             
+            <!-- FIXED BUTTON ID -->
             <button id="theme-toggle-button" class="kuromi-button customize-button" type="button">
                 <span class="icon">🌙</span> SWITCH TO DARK MODE
             </button>
@@ -27,14 +28,13 @@
                     <h2>Achievements/Certifications</h2>
                     
                     <div class="achievement-controls">
-                         <label for="upload-pdf" class="kuromi-button pdf-button">
+                        <label for="upload-pdf" class="kuromi-button pdf-button">
                             <span class="icon">📄</span> Upload Achievement PDF/Image
                         </label>
                         <input type="file" id="upload-pdf" accept=".pdf, image/*" class="hidden-input">
                     </div>
 
-                    <ul id="certificates-list">
-                        </ul>
+                    <ul id="certificates-list"></ul>
                 </div>
 
                 <div class="section-box projects-section">
@@ -46,15 +46,14 @@
                         <input type="url" id="project-link" placeholder="Project Link (GitHub/Demo URL)" required>
                         <button type="submit" class="add-project-button">Add Project ➕</button>
                     </form>
-                    
-                    <div id="projects-list">
-                        </div>
-                    
+
+                    <div id="projects-list"></div>
                     <a href="#" class="view-all-link">View All Projects</a>
                 </div>
             </section>
 
             <section class="profile-column">
+
                 <div class="profile-picture-container">
                     <div class="profile-frame">
                         <img id="profile-img" src="default-kuromi-icon.png" alt="Profile Picture">
@@ -63,8 +62,9 @@
                     <label for="upload-pic" class="hidden-upload-label"></label>
                     <input type="file" id="upload-pic" accept="image/*" class="hidden-input">
                 </div>
-            </section>
 
+                <!-- REMOVED résumé upload -->
+            </section>
         </main>
         
         <footer class="dock">
