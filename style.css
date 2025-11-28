@@ -3,7 +3,6 @@
    - Kuromi Purple (#8a5a9b)
    - Light Pastel Purple (Background: #f5f0ff)
    - Pink/Fuchsia (Accent: #e3006a) 
-   - Light Background: #f7f3ff (Slightly lighter than body for sections)
 */
 
 :root {
@@ -13,7 +12,8 @@
     --kuromi-light-bg: #f5f0ff;
     --kuromi-section-bg: #f7f3ff;
     --font-heading: 'Creepster', cursive; 
-    --font-body: 'Varela Round', sans-serif; /* New Cute Font */
+    --font-body: 'Varela Round', sans-serif; 
+    --font-simple: 'Poppins', sans-serif; /* For the name */
 }
 
 body {
@@ -25,7 +25,7 @@ body {
     min-height: 100vh;
 }
 
-/* Outer Border/Frame */
+/* Outer Border/Frame matching the screenshot */
 .page-border {
     max-width: 1200px;
     margin: 20px auto;
@@ -42,21 +42,23 @@ body {
 }
 
 .header h1 {
-    font-family: var(--font-heading);
-    font-size: 3em;
+    /* Simple, Bold Name Font */
+    font-family: var(--font-simple); 
+    font-size: 2.2em; 
+    font-weight: 700;
     color: var(--kuromi-purple); 
     text-shadow: 2px 2px 0 var(--kuromi-light-bg), -1px -1px 0 var(--kuromi-black);
     margin: 0;
+    letter-spacing: 2px;
 }
 
 .subtitle {
     color: var(--kuromi-black);
     font-weight: 500;
     margin-top: 5px;
-    font-family: var(--font-body); /* Ensure this is also the cute font */
 }
 
-/* --- Layout Grid --- */
+/* --- Layout Grid (Two Columns) --- */
 .container {
     padding: 30px;
     display: grid;
@@ -64,12 +66,23 @@ body {
     gap: 40px;
 }
 
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* --- Section Boxes (Achievements & Projects) --- */
 .section-box {
-    background-color: white; /* Use white background for clarity */
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #ccc; /* Subtle border for definition */
 }
 
 .achievements-section {
@@ -116,8 +129,7 @@ h2 {
     background-color: var(--kuromi-section-bg);
 }
 
-#add-project-form input[type="text"],
-#add-project-form input[type="url"],
+#add-project-form input,
 #add-project-form textarea {
     padding: 8px 10px;
     border: 1px solid var(--kuromi-purple);
@@ -141,10 +153,6 @@ h2 {
     transition: background-color 0.2s;
 }
 
-.add-project-button:hover {
-    background-color: #6c4b7c;
-}
-
 .project-item {
     padding: 10px 0;
     border-bottom: 1px dotted var(--kuromi-pink);
@@ -161,8 +169,33 @@ h2 {
     margin-left: 10px;
 }
 
-/* --- Profile & Upload Buttons --- */
-/* (Styles for profile-picture-container and profile-frame are kept from previous version) */
+/* --- Profile Picture & Upload Buttons --- */
+.profile-picture-container {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--kuromi-purple);
+    border: 5px dotted var(--kuromi-black); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#profile-img {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
 .upload-controls {
     display: flex;
@@ -187,13 +220,8 @@ h2 {
     border: 2px solid var(--kuromi-black);
 }
 
-/* Re-defined button colors */
-.pdf-button { /* Achievement PDF */
-    background-color: var(--kuromi-purple);
-    color: white;
-}
-
-.resume-button { /* General Resume PDF */
+/* Button Colors */
+.pdf-button, .resume-button { 
     background-color: var(--kuromi-purple);
     color: white;
 }
@@ -216,4 +244,38 @@ h2 {
 
 .hidden-input {
     display: none;
+}
+
+/* --- Dark Mode Styles --- */
+.dark-mode {
+    --kuromi-light-bg: #111111;
+    --kuromi-section-bg: #1f1f1f;
+    --kuromi-black: #f5f0ff;
+    --kuromi-purple: #c4a1d4;
+    --kuromi-pink: #ff69b4;
+}
+
+.dark-mode .page-border {
+    border: 15px solid var(--kuromi-purple);
+    background-color: #2a2a2a;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .header {
+    background: var(--kuromi-section-bg);
+}
+
+.dark-mode .header h1 {
+    text-shadow: 2px 2px 0 #111111, -1px -1px 0 var(--kuromi-pink);
+}
+
+.dark-mode .section-box {
+    background-color: var(--kuromi-section-bg);
+    border: 1px solid var(--kuromi-purple);
+}
+
+.dark-mode .customize-button {
+    background-color: var(--kuromi-black);
+    color: var(--kuromi-pink);
+    border: 2px solid var(--kuromi-pink);
 }
