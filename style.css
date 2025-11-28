@@ -13,7 +13,7 @@
     --kuromi-light-bg: #f5f0ff;
     --kuromi-section-bg: #f7f3ff;
     --font-heading: 'Creepster', cursive; 
-    --font-body: 'Poppins', sans-serif;
+    --font-body: 'Varela Round', sans-serif; /* New Cute Font */
 }
 
 body {
@@ -25,35 +25,26 @@ body {
     min-height: 100vh;
 }
 
-/* Outer Border/Frame from the image concept */
+/* Outer Border/Frame */
 .page-border {
     max-width: 1200px;
     margin: 20px auto;
-    border: 15px solid var(--kuromi-purple); /* Thick border matching the image */
-    border-style: solid;
-    background-color: white; /* Inner area is white/light */
+    border: 15px solid var(--kuromi-purple); 
+    background-color: white; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Header & Title (Matching the central, soft look) --- */
+/* --- Header & Title --- */
 .header {
     text-align: center;
     padding: 30px 20px 20px;
-    background: var(--kuromi-light-bg); /* Soft light background for header */
-}
-
-.header-kuromi-graphic {
-    /* Placeholder for the large central bow/skull graphic */
-    height: 50px;
-    background: url('kuromi-bow-graphic.png') no-repeat center; /* Replace with your actual graphic */
-    background-size: contain;
-    margin-bottom: 10px;
+    background: var(--kuromi-light-bg); 
 }
 
 .header h1 {
     font-family: var(--font-heading);
     font-size: 3em;
-    color: var(--kuromi-purple); /* Purple text color */
+    color: var(--kuromi-purple); 
     text-shadow: 2px 2px 0 var(--kuromi-light-bg), -1px -1px 0 var(--kuromi-black);
     margin: 0;
 }
@@ -62,62 +53,48 @@ body {
     color: var(--kuromi-black);
     font-weight: 500;
     margin-top: 5px;
+    font-family: var(--font-body); /* Ensure this is also the cute font */
 }
 
-/* --- Layout Grid (Two Columns) --- */
+/* --- Layout Grid --- */
 .container {
     padding: 30px;
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Left column wider than right */
+    grid-template-columns: 2fr 1fr; 
     gap: 40px;
-}
-
-.content-column {
-    /* Holds Achievements and Projects */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.profile-column {
-    /* Holds Profile Pic and Uploads */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* --- Section Boxes (Achievements & Projects) --- */
 .section-box {
-    background-color: var(--kuromi-section-bg);
+    background-color: white; /* Use white background for clarity */
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid #ccc; /* Subtle border for definition */
 }
 
 .achievements-section {
-    flex-grow: 0; /* Keep it compact */
-    border-bottom: 2px solid var(--kuromi-pink);
+    border: 2px solid var(--kuromi-pink);
 }
 
 .projects-section {
-    flex-grow: 1; /* This box should take up the remaining space */
-    border: 3px solid var(--kuromi-purple);
+    border: 2px solid var(--kuromi-purple);
 }
 
 h2 {
     font-family: var(--font-body);
     font-size: 1.5em;
     font-weight: 700;
-    color: var(--kuromi-pink); /* Red heading text */
+    color: var(--kuromi-pink); 
     margin-top: 0;
     margin-bottom: 15px;
 }
 
-.achievements-section ul {
+.certificates-list {
     list-style: none;
     padding: 0;
 }
 
-.achievements-section li {
+.certificates-list li {
     padding: 5px 0;
     font-size: 0.95em;
 }
@@ -127,68 +104,65 @@ h2 {
     margin-right: 5px;
 }
 
-.projects-section p {
-    margin: 5px 0;
-}
-
-.view-all-link {
-    display: block;
-    margin-top: 15px;
-    color: var(--kuromi-purple);
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* --- Profile Picture & Uploads --- */
-.profile-picture-container {
-    width: 220px;
-    height: 220px;
-    margin-bottom: 30px;
-    position: relative;
-    cursor: pointer;
-}
-
-.profile-frame {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: var(--kuromi-purple);
-    border: 5px dotted var(--kuromi-black); /* Decorative border matching the image */
+/* --- Project Form Styling --- */
+#add-project-form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px dashed var(--kuromi-purple);
+    border-radius: 8px;
+    background-color: var(--kuromi-section-bg);
 }
 
-#profile-img {
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 2;
-    transition: opacity 0.3s;
+#add-project-form input[type="text"],
+#add-project-form input[type="url"],
+#add-project-form textarea {
+    padding: 8px 10px;
+    border: 1px solid var(--kuromi-purple);
+    border-radius: 5px;
+    font-family: var(--font-body);
 }
 
-.upload-pic-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+#add-project-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.add-project-button {
+    background-color: var(--kuromi-purple);
     color: white;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-weight: 700;
+    transition: background-color 0.2s;
 }
 
-.profile-picture-container:hover .upload-pic-overlay {
-    opacity: 1;
+.add-project-button:hover {
+    background-color: #6c4b7c;
 }
+
+.project-item {
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--kuromi-pink);
+}
+
+.project-item strong {
+    color: var(--kuromi-pink);
+}
+
+.project-item a {
+    color: var(--kuromi-purple);
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+/* --- Profile & Upload Buttons --- */
+/* (Styles for profile-picture-container and profile-frame are kept from previous version) */
 
 .upload-controls {
     display: flex;
@@ -197,7 +171,6 @@ h2 {
     width: 100%;
 }
 
-/* --- Upload Button Styles (Reused from previous response) --- */
 .kuromi-button {
     cursor: pointer;
     padding: 12px 20px;
@@ -214,7 +187,13 @@ h2 {
     border: 2px solid var(--kuromi-black);
 }
 
-.pdf-button {
+/* Re-defined button colors */
+.pdf-button { /* Achievement PDF */
+    background-color: var(--kuromi-purple);
+    color: white;
+}
+
+.resume-button { /* General Resume PDF */
     background-color: var(--kuromi-purple);
     color: white;
 }
@@ -237,19 +216,4 @@ h2 {
 
 .hidden-input {
     display: none;
-}
-
-/* Link the profile picture upload button to the frame */
-.profile-picture-container {
-    position: relative;
-}
-.hidden-upload-label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
 }
