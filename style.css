@@ -11,8 +11,8 @@
     --kuromi-pink: #e3006a;
     --kuromi-light-bg: #f5f0ff;
     --kuromi-section-bg: #f7f3ff;
-    --font-heading: 'Creepster', cursive; 
-    --font-body: 'Varela Round', sans-serif; 
+    --font-heading: 'Creepster', cursive;
+    --font-body: 'Varela Round', sans-serif;
     --font-simple: 'Poppins', sans-serif; /* For the name */
 }
 
@@ -25,28 +25,28 @@ body {
     min-height: 100vh;
 }
 
-/* Outer Border/Frame matching the screenshot */
+/* Outer Border/Frame */
 .page-border {
     max-width: 1200px;
     margin: 20px auto;
-    border: 15px solid var(--kuromi-purple); 
-    background-color: white; 
+    border: 15px solid var(--kuromi-purple);
+    background-color: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Header & Title --- */
+/* Header & Title */
 .header {
     text-align: center;
     padding: 30px 20px 20px;
-    background: var(--kuromi-light-bg); 
+    background: var(--kuromi-light-bg);
+    position: relative;
 }
 
 .header h1 {
-    /* Simple, Bold Name Font */
-    font-family: var(--font-simple); 
-    font-size: 2.2em; 
+    font-family: var(--font-simple);
+    font-size: 2.2em;
     font-weight: 700;
-    color: var(--kuromi-purple); 
+    color: var(--kuromi-purple);
     text-shadow: 2px 2px 0 var(--kuromi-light-bg), -1px -1px 0 var(--kuromi-black);
     margin: 0;
     letter-spacing: 2px;
@@ -58,11 +58,18 @@ body {
     margin-top: 5px;
 }
 
-/* --- Layout Grid (Two Columns) --- */
+/* Theme toggle button inside header (align right) */
+#theme-toggle-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Layout Grid */
 .container {
     padding: 30px;
     display: grid;
-    grid-template-columns: 2fr 1fr; 
+    grid-template-columns: 2fr 1fr;
     gap: 40px;
 }
 
@@ -78,7 +85,7 @@ body {
     align-items: center;
 }
 
-/* --- Section Boxes (Achievements & Projects) --- */
+/* Section Boxes */
 .section-box {
     background-color: white;
     padding: 20px;
@@ -97,17 +104,17 @@ h2 {
     font-family: var(--font-body);
     font-size: 1.5em;
     font-weight: 700;
-    color: var(--kuromi-pink); 
+    color: var(--kuromi-pink);
     margin-top: 0;
     margin-bottom: 15px;
 }
 
-.certificates-list {
+#certificates-list {
     list-style: none;
     padding: 0;
 }
 
-.certificates-list li {
+#certificates-list li {
     padding: 5px 0;
     font-size: 0.95em;
 }
@@ -117,7 +124,7 @@ h2 {
     margin-right: 5px;
 }
 
-/* --- Project Form Styling --- */
+/* Project Form Styling */
 #add-project-form {
     display: flex;
     flex-direction: column;
@@ -169,7 +176,7 @@ h2 {
     margin-left: 10px;
 }
 
-/* --- Profile Picture & Upload Buttons --- */
+/* Profile Picture & Upload Buttons */
 .profile-picture-container {
     width: 220px;
     height: 220px;
@@ -183,7 +190,7 @@ h2 {
     height: 100%;
     border-radius: 50%;
     background: var(--kuromi-purple);
-    border: 5px dotted var(--kuromi-black); 
+    border: 5px dotted var(--kuromi-black);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +228,8 @@ h2 {
 }
 
 /* Button Colors */
-.pdf-button, .resume-button { 
+.pdf-button,
+.resume-button {
     background-color: var(--kuromi-purple);
     color: white;
 }
@@ -246,7 +254,7 @@ h2 {
     display: none;
 }
 
-/* --- Dark Mode Styles --- */
+/* Dark Mode Variables */
 .dark-mode {
     --kuromi-light-bg: #111111;
     --kuromi-section-bg: #1f1f1f;
@@ -255,6 +263,7 @@ h2 {
     --kuromi-pink: #ff69b4;
 }
 
+/* Dark Mode Element Styles */
 .dark-mode .page-border {
     border: 15px solid var(--kuromi-purple);
     background-color: #2a2a2a;
@@ -278,4 +287,32 @@ h2 {
     background-color: var(--kuromi-black);
     color: var(--kuromi-pink);
     border: 2px solid var(--kuromi-pink);
+}
+
+/* Dock Style Footer */
+.dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--kuromi-purple);
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.dock-item {
+    margin: 0 25px;
+    color: white;
+    font-weight: 700;
+    font-family: var(--font-simple);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.dock-item:hover {
+    color: var(--kuromi-pink);
 }
