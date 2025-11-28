@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Profile Picture Upload (Logic remains the same) ---
+    // --- 1. Profile Picture Upload ---
     const uploadPicInput = document.getElementById('upload-pic');
     const profileImg = document.getElementById('profile-img');
     const profileFrame = document.querySelector('.profile-frame'); 
 
+    // Makes the circular frame clickable
     profileFrame.addEventListener('click', () => {
         uploadPicInput.click();
     });
@@ -21,10 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 2. File Uploads (PDF/Certificates) ---
-    const uploadPdfInput = document.getElementById('upload-pdf'); // Achievement PDF/Image
-    const uploadResumeInput = document.getElementById('upload-resume'); // General Resume PDF
-    const uploadCertPicInput = document.getElementById('upload-cert-pic'); // Picture Certs
-
+    const uploadPdfInput = document.getElementById('upload-pdf'); 
+    const uploadResumeInput = document.getElementById('upload-resume'); 
+    const uploadCertPicInput = document.getElementById('upload-cert-pic'); 
     const certificatesList = document.getElementById('certificates-list');
 
     function handleFileUpload(inputElement, sectionName) {
@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = event.target.files[0];
             if (file) {
                 if (sectionName === 'Achievement') {
-                     // Simulate adding the certificate/achievement to the list
+                     // Simulate adding the uploaded certificate/achievement to the list
                     const listItem = document.createElement('li');
-                    listItem.innerHTML = `<span class="skull-icon">😈</span> Uploaded: ${file.name} (Type: ${file.type.split('/')[0]})`;
-                    certificatesList.appendChild(listItem);
+                    listItem.innerHTML = `<span class="skull-icon">😈</span> Uploaded: ${file.name}`;
+                    certificatesList.prepend(listItem);
                 }
                 alert(`SUCCESS! ${sectionName} File Uploaded: ${file.name}.`);
                 event.target.value = null; // Clear the input
@@ -67,24 +67,32 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="${link}" target="_blank">View Project Link</a>
         `;
 
-        // Add the new project to the list at the top
+        // Add the new project to the list
         projectsList.prepend(newProjectItem);
 
         // Clear the form
         addProjectForm.reset();
-        alert(`New Project Added: "${title}"`);
+        console.log(`New Project Added: "${title}"`);
     });
 
-    // --- 4. Simple Customization/Dark Mode Toggle (Optional) ---
-    const customizeButton = document.querySelector('.customize-button');
+    // --- 4. Handle Theme Toggle ---
+    const themeToggleButton = document.getElementById('theme-toggle-button');
+    const body = document.body;
 
-    customizeButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        
-        if (document.body.classList.contains('dark-mode')) {
-            alert('Switched to Kuromi Dark Mode! 🖤');
+    function updateThemeButton(isDarkMode) {
+        if (isDarkMode) {
+            themeToggleButton.innerHTML = '<span class="icon">☀️</span> SWITCH TO LIGHT MODE';
         } else {
-            alert('Switched back to Light Pastel Mode! 💜');
+            themeToggleButton.innerHTML = '<span class="icon">🌙</span> SWITCH TO DARK MODE';
         }
+    }
+
+    // Initial state check
+    updateThemeButton(body.classList.contains('dark-mode'));
+
+    themeToggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        updateThemeButton(isDarkMode);
     });
 });
