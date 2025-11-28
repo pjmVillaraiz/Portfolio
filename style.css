@@ -1,63 +1,30 @@
-/* ============================
-   DARK MODE THEME VARIABLES
-============================ */
+/* Default Light Theme */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#profile-img {
+	width: 150px;
+	border-radius: 50%;
+}
+
+button {
+	padding: 10px 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+/* Dark Theme */
 body.dark {
-    --kuromi-light-bg: #111111;
-    --kuromi-section-bg: #1f1f1f;
-    --kuromi-black: #f5f0ff;
-    --kuromi-purple: #c4a1d4;
-    --kuromi-pink: #ff69b4;
-
-    background-color: var(--kuromi-light-bg);
-    color: var(--kuromi-black);
-}
-
-/* Page Border */
-body.dark .page-border {
-    border: 15px solid var(--kuromi-purple);
-    background-color: #2a2a2a;
-}
-
-/* Header */
-body.dark .header {
-    background: var(--kuromi-section-bg);
-}
-
-body.dark .header h1 {
-    text-shadow: 2px 2px 0 #111111, -1px -1px 0 var(--kuromi-pink);
-}
-
-/* Sections */
-body.dark .section-box {
-    background-color: var(--kuromi-section-bg);
-    border: 1px solid var(--kuromi-purple);
-}
-
-/* Form Fields */
-body.dark input,
-body.dark textarea {
-    background: #2d2d2d;
-    color: white;
-    border-color: var(--kuromi-purple);
-}
-
-/* Buttons */
-body.dark .kuromi-button {
-    background-color: var(--kuromi-black);
-    color: var(--kuromi-pink);
-    border: 2px solid var(--kuromi-pink);
-}
-
-/* Footer Dock */
-body.dark .dock {
-    background-color: #2a2a2a;
-}
-
-body.dark .dock-item {
-    color: var(--kuromi-purple);
-}
-
-/* Optional: hide default file inputs */
-.hidden-input {
-    display: none;
+	background-color: #121212;
+	color: #f5f5f5;
 }
