@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Student Portfolio</title>
-      <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-      <header>
-         <h1 id="name">Student Name</h1>
-         <img src="profile.jpg" alt="Profile Picture" id="profile-img">
-         <p id="course-year">Course - Year</p>
-         <button id="theme-toggle">Switch Theme</button>
-      </header>
-      <section id="achievements">
-         <h2>Achievements/Certifications</h2>
-         <ul>
-            <li>Achievement 1</li>
-            <li>Achievement 2</li>
-            <li>Achievement 3</li>
-         </ul>
-      </section>
-      <section id="projects">
-         <h2>Previous Projects</h2>
-         <ul>
-            <li>Project 1</li>
-            <li>Project 2</li>
-            <li>Project 3</li>
-         </ul>
-      </section>
-      <script src="script.js"></script>
-   </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuromi Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Princess Jelyn Mae Villaraiz</h1>
+
+        <!-- Profile Picture -->
+        <img id="profilePreview" class="profile" src="" alt="Profile Picture">
+        <div class="upload-box">
+            <label>Upload Profile Picture:</label><br>
+            <input type="file" id="profileInput" accept="image/*">
+        </div>
+
+        <p>BSIT — 1st Year</p>
+    </div>
+
+    <!-- Certificates -->
+    <div class="section">
+        <h2>Achievements / Certifications</h2>
+        <div id="certContainer" class="grid"></div>
+
+        <input type="file" id="certUpload" accept="image/*" multiple>
+        <button onclick="addCertificates()">Upload Certificates</button>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+        <h2>Previous Projects</h2>
+        <div id="projContainer" class="grid"></div>
+
+        <input type="file" id="projUpload" accept="image/*" multiple>
+        <button onclick="addProjects()">Upload Projects</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
