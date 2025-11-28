@@ -1,80 +1,73 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Princess Jelyn Mae Villaraiz - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Kuromi BSIS Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Princess Jelyn Mae Villaraiz</h1>
-        <p class="tagline">✨ Anime Enthusiast | Full-Stack Developer | Creative Coder ✨</p>
-        
-        <div class="profile-section">
-            <img id="profilePreview" class="profile placeholder" src="" alt="Profile Picture">
-            <div class="upload-box">
-                <label>Upload Profile Picture:</label>
-                <label for="profileInput" class="file-label">Choose File 📸</label>
-                <input type="file" id="profileInput" accept="image/*">
-            </div>
-        </div>
-        
-        <p class="course-info">BSIS — 2nd Year 💻</p>
-    </div>
 
-    <!-- About Me / Personality -->
-    <div class="section">
-        <h2>About Me</h2>
-        <div class="personality-grid">
-            <div class="personality-card">
-                <div class="icon">🎌</div>
-                <h3>Anime Lover</h3>
-                <p>I'm passionate about anime and manga. I love exploring different genres and characters that inspire my creative projects.</p>
-            </div>
-            <div class="personality-card">
-                <div class="icon">💻</div>
-                <h3>Code Enthusiast</h3>
-                <p>Coding is my passion! I love solving problems through programming and creating innovative applications that make a difference.</p>
-            </div>
-            <div class="personality-card">
-                <div class="icon">🚀</div>
-                <h3>Industry Experience</h3>
-                <p>I bring real-world experience from my work in the tech industry, applying practical knowledge to my academic projects.</p>
-            </div>
-            <div class="personality-card">
-                <div class="icon">🌟</div>
-                <h3>Creative Developer</h3>
-                <p>I blend creativity with technical skills to build beautiful, functional applications that users love.</p>
-            </div>
-        </div>
-    </div>
+    <div class="page-border">
+        <header class="header">
+            <div class="header-kuromi-graphic"></div>
+            <h1><span id="student-name">Princess Jelyn Mae S. Villaraiz</span></h1>
+            <p class="subtitle">BSIS 2nd Year</p>
+        </header>
 
-    <!-- Projects -->
-    <div class="section">
-        <h2>Previous Projects & Code</h2>
-        <div class="upload-area">
-            <label for="projUpload" class="file-label">Choose Files 🖼️</label>
-            <input type="file" id="projUpload" accept="image/*" multiple>
-            <button onclick="addProjects()">Upload Projects</button>
-        </div>
-        <div id="projContainer" class="grid">
-            <div class="empty-state">No projects uploaded yet</div>
-        </div>
-    </div>
+        <main class="container">
+            <section class="content-column">
+                
+                <div class="section-box achievements-section">
+                    <h2>Achievements/Certifications</h2>
+                    <ul id="certificates-list">
+                        <li><span class="skull-icon">💀</span> Achievement 1</li>
+                        <li><span class="skull-icon">💀</span> Achievement 2</li>
+                        <li><span class="skull-icon">💀</span> Achievement 3 💀</li>
+                    </ul>
+                </div>
 
-    <!-- Achievements & Certifications -->
-    <div class="section">
-        <h2>Achievements / Certifications</h2>
-        <div class="upload-area">
-            <label for="certUpload" class="file-label">Choose Files 📄</label>
-            <input type="file" id="certUpload" accept="image/*" multiple>
-            <button onclick="addCertificates()">Upload Certificates</button>
-        </div>
-        <div id="certContainer" class="grid">
-            <div class="empty-state">No certificates uploaded yet</div>
-        </div>
+                <div class="section-box projects-section">
+                    <h2>Previous Projects</h2>
+                    <div id="projects-list">
+                        <p>• Project 1</p>
+                        <p>• Project 2</p>
+                        <p>• Project 3 💀</p>
+                    </div>
+                    <a href="#" class="view-all-link">View All Projects</a>
+                </div>
+            </section>
+
+            <section class="profile-column">
+                <div class="profile-picture-container">
+                    <div class="profile-frame">
+                        <img id="profile-img" src="default-kuromi-icon.png" alt="Profile Picture">
+                        <div class="upload-pic-overlay">Upload Profile Picture</div>
+                    </div>
+                    
+                    <label for="upload-pic" class="hidden-upload-label"></label>
+                    <input type="file" id="upload-pic" accept="image/*" class="hidden-input">
+                </div>
+
+                <div class="upload-controls">
+                    <label for="upload-pdf" class="kuromi-button pdf-button">
+                        <span class="icon">📄</span> Upload PDF Resume
+                    </label>
+                    <input type="file" id="upload-pdf" accept=".pdf" class="hidden-input">
+                    
+                    <label for="upload-cert" class="kuromi-button cert-button">
+                        <span class="icon">📸</span> Upload Picture Certificate(s)
+                    </label>
+                    <input type="file" id="upload-cert" accept="image/*" class="hidden-input">
+                    
+                    <button class="kuromi-button customize-button">
+                        <span class="icon">💅</span> Customize Theme
+                    </button>
+                </div>
+            </section>
+
+        </main>
     </div>
 
     <script src="script.js"></script>
