@@ -1,7 +1,6 @@
 /* ============================
-   DARK MODE THEME
+   DARK MODE THEME VARIABLES
 ============================ */
-
 body.dark {
     --kuromi-light-bg: #111111;
     --kuromi-section-bg: #1f1f1f;
@@ -17,7 +16,6 @@ body.dark {
 body.dark .page-border {
     border: 15px solid var(--kuromi-purple);
     background-color: #2a2a2a;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 /* Header */
@@ -26,8 +24,7 @@ body.dark .header {
 }
 
 body.dark .header h1 {
-    text-shadow: 2px 2px 0 #111111,
-                 -1px -1px 0 var(--kuromi-pink);
+    text-shadow: 2px 2px 0 #111111, -1px -1px 0 var(--kuromi-pink);
 }
 
 /* Sections */
@@ -58,4 +55,9 @@ body.dark .dock {
 
 body.dark .dock-item {
     color: var(--kuromi-purple);
+}
+
+/* Optional: hide default file inputs */
+.hidden-input {
+    display: none;
 }
