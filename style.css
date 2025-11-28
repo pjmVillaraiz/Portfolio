@@ -1,315 +1,255 @@
-/* styles.css */
+/* Color Palette: 
+   - Black (#1f1f1f)
+   - Kuromi Purple (#8a5a9b)
+   - Light Pastel Purple (Background: #f5f0ff)
+   - Pink/Fuchsia (Accent: #e3006a) 
+   - Light Background: #f7f3ff (Slightly lighter than body for sections)
+*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --kuromi-black: #1f1f1f;
+    --kuromi-purple: #8a5a9b;
+    --kuromi-pink: #e3006a;
+    --kuromi-light-bg: #f5f0ff;
+    --kuromi-section-bg: #f7f3ff;
+    --font-heading: 'Creepster', cursive; 
+    --font-body: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Comic Sans MS', 'Arial', sans-serif;
-    background-color: #1b1b1b;
-    color: white;
-    background-image: url('https://i.imgur.com/8w08YcF.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--kuromi-light-bg);
+    color: var(--kuromi-black);
     min-height: 100vh;
 }
 
-.container {
+/* Outer Border/Frame from the image concept */
+.page-border {
+    max-width: 1200px;
+    margin: 20px auto;
+    border: 15px solid var(--kuromi-purple); /* Thick border matching the image */
+    border-style: solid;
+    background-color: white; /* Inner area is white/light */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Header & Title (Matching the central, soft look) --- */
+.header {
     text-align: center;
-    padding: 40px 20px;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.3);
+    padding: 30px 20px 20px;
+    background: var(--kuromi-light-bg); /* Soft light background for header */
 }
 
-h1 {
+.header-kuromi-graphic {
+    /* Placeholder for the large central bow/skull graphic */
+    height: 50px;
+    background: url('kuromi-bow-graphic.png') no-repeat center; /* Replace with your actual graphic */
+    background-size: contain;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    font-family: var(--font-heading);
     font-size: 3em;
-    margin-bottom: 20px;
-    color: #ff6ec7;
-    text-shadow: 0 0 20px rgba(255, 110, 199, 0.8),
-                 0 0 40px rgba(255, 110, 199, 0.5);
-    animation: glow 2s infinite alternate;
+    color: var(--kuromi-purple); /* Purple text color */
+    text-shadow: 2px 2px 0 var(--kuromi-light-bg), -1px -1px 0 var(--kuromi-black);
+    margin: 0;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 20px rgba(255, 110, 199, 0.8), 0 0 40px rgba(255, 110, 199, 0.5); }
-    to { text-shadow: 0 0 30px rgba(255, 110, 199, 1), 0 0 60px rgba(255, 110, 199, 0.8); }
+.subtitle {
+    color: var(--kuromi-black);
+    font-weight: 500;
+    margin-top: 5px;
 }
 
-.tagline {
-    font-size: 1.2em;
-    color: #a855f7;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.profile-section {
-    margin: 30px 0;
-}
-
-.profile {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #ff6ec7;
-    box-shadow: 0 0 30px rgba(255, 110, 199, 0.6);
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-.profile.placeholder {
-    background: linear-gradient(135deg, #ff6ec7, #a855f7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-}
-
-.upload-box {
-    margin: 20px 0;
-}
-
-.upload-box label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffa8e9;
-    font-weight: bold;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.file-label {
-    display: inline-block;
-    padding: 10px 25px;
-    background: linear-gradient(135deg, #ff6ec7, #a855f7);
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: 2px solid #ff6ec7;
-}
-
-.file-label:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(255, 110, 199, 0.6);
-}
-
-.course-info {
-    font-size: 1.3em;
-    color: #ffa8e9;
-    margin-top: 10px;
-    font-style: italic;
-}
-
-.personality-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.personality-card {
-    background: rgba(168, 85, 247, 0.2);
-    border: 2px solid #a855f7;
-    border-radius: 15px;
-    padding: 20px;
-    transition: all 0.3s ease;
-}
-
-.personality-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
-    background: rgba(168, 85, 247, 0.3);
-}
-
-.personality-card .icon {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-.personality-card h3 {
-    color: #ff6ec7;
-    margin-bottom: 8px;
-}
-
-.personality-card p {
-    color: #ffa8e9;
-    font-size: 0.95em;
-}
-
-.section {
-    width: 85%;
-    max-width: 1000px;
-    margin: 30px auto;
+/* --- Layout Grid (Two Columns) --- */
+.container {
     padding: 30px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 20px;
-    border: 3px solid #ff6ec7;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(255, 110, 199, 0.3);
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Left column wider than right */
+    gap: 40px;
+}
+
+.content-column {
+    /* Holds Achievements and Projects */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-column {
+    /* Holds Profile Pic and Uploads */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Section Boxes (Achievements & Projects) --- */
+.section-box {
+    background-color: var(--kuromi-section-bg);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.achievements-section {
+    flex-grow: 0; /* Keep it compact */
+    border-bottom: 2px solid var(--kuromi-pink);
+}
+
+.projects-section {
+    flex-grow: 1; /* This box should take up the remaining space */
+    border: 3px solid var(--kuromi-purple);
 }
 
 h2 {
-    color: #ff6ec7;
-    font-size: 2em;
-    margin-bottom: 20px;
-    border-bottom: 3px dashed #ff6ec7;
-    padding-bottom: 10px;
+    font-family: var(--font-body);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--kuromi-pink); /* Red heading text */
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-h2::before {
-    content: '☠ ';
-    margin-right: 10px;
+.achievements-section ul {
+    list-style: none;
+    padding: 0;
 }
 
-h2::after {
-    content: ' ★';
-    margin-left: 10px;
-    color: #a855f7;
+.achievements-section li {
+    padding: 5px 0;
+    font-size: 0.95em;
 }
 
-.upload-area {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+.skull-icon {
+    color: var(--kuromi-black);
+    margin-right: 5px;
 }
 
-button {
-    padding: 12px 30px;
-    background: linear-gradient(135deg, #ff6ec7, #a855f7);
-    border: 2px solid #ff6ec7;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    color: white;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 110, 199, 0.4);
+.projects-section p {
+    margin: 5px 0;
 }
 
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(255, 110, 199, 0.6);
-}
-
-button:active {
-    transform: translateY(0);
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.grid-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 3px solid #ff6ec7;
-    box-shadow: 0 5px 15px rgba(255, 110, 199, 0.3);
-    transition: all 0.3s ease;
-}
-
-.grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 110, 199, 0.6);
-}
-
-.grid-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.view-all-link {
     display: block;
+    margin-top: 15px;
+    color: var(--kuromi-purple);
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.grid-item .delete-btn {
+/* --- Profile Picture & Uploads --- */
+.profile-picture-container {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--kuromi-purple);
+    border: 5px dotted var(--kuromi-black); /* Decorative border matching the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#profile-img {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    transition: opacity 0.3s;
+}
+
+.upload-pic-overlay {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 12px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #ff6ec7;
-    border-radius: 10px;
-    font-size: 0.9em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
+    font-weight: 700;
 }
 
-.grid-item:hover .delete-btn {
+.profile-picture-container:hover .upload-pic-overlay {
     opacity: 1;
 }
 
-.empty-state {
+.upload-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+/* --- Upload Button Styles (Reused from previous response) --- */
+.kuromi-button {
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
     text-align: center;
-    padding: 40px;
-    color: #ffa8e9;
-    font-style: italic;
-}
-
-.empty-state::before {
-    content: '♡';
-    display: block;
-    font-size: 3em;
-    margin-bottom: 10px;
-    color: #ff6ec7;
-}
-
-.work-exp-item {
-    background: rgba(255, 110, 199, 0.1);
-    border-left: 4px solid #ff6ec7;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-    text-align: left;
-}
-
-.work-exp-item h3 {
-    color: #ff6ec7;
-    margin-bottom: 5px;
-}
-
-.work-exp-item .position {
-    color: #a855f7;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.work-exp-item .date {
-    color: #ffa8e9;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
     font-size: 0.9em;
-    margin-bottom: 10px;
+    border: 2px solid var(--kuromi-black);
 }
 
-.work-exp-item p {
-    color: #ccc;
-    line-height: 1.6;
+.pdf-button {
+    background-color: var(--kuromi-purple);
+    color: white;
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2em;
-    }
+.cert-button {
+    background-color: var(--kuromi-black);
+    color: var(--kuromi-light-bg);
+}
 
-    .section {
-        width: 95%;
-        padding: 20px;
-    }
+.customize-button {
+    background-color: var(--kuromi-pink);
+    color: white;
+    border: 2px solid var(--kuromi-black);
+}
 
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
+.kuromi-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    .personality-grid {
-        grid-template-columns: 1fr;
-    }
+.hidden-input {
+    display: none;
+}
+
+/* Link the profile picture upload button to the frame */
+.profile-picture-container {
+    position: relative;
+}
+.hidden-upload-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
 }
