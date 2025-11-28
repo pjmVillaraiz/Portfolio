@@ -3,141 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuromi Student Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1b1b1b;
-            color: #ffffff;
-            background-image: url('https://i.imgur.com/8w08YcF.png'); /* Kuromi pattern */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        .container {
-            text-align: center;
-            padding: 40px;
-            backdrop-filter: blur(5px);
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #ff6ec7;
-        }
-
-        img.profile {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ff6ec7;
-            margin-bottom: 10px;
-        }
-
-        .upload-box {
-            margin-top: 10px;
-        }
-
-        .section {
-            text-align: left;
-            width: 60%;
-            margin: 30px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            border: 2px solid #ff6ec7;
-        }
-
-        h2 {
-            color: #ff6ec7;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background-color: #ff6ec7;
-            color: black;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #ffa8e9;
-        }
-    </style>
+    <title>Princess Jelyn Mae Villaraiz - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>Student Name</h1>
-
-        <img id="profilePreview" class="profile" src="" alt="Profile Picture">
-
-        <div class="upload-box">
-            <label>Upload Profile Picture:</label><br>
-            <input type="file" id="profileInput" accept="image/*">
+        <h1>Princess Jelyn Mae Villaraiz</h1>
+        
+        <div class="profile-section">
+            <img id="profilePreview" class="profile placeholder" src="" alt="Profile Picture">
+            <div class="upload-box">
+                <label>Upload Profile Picture:</label>
+                <label for="profileInput" class="file-label">Choose File 📸</label>
+                <input type="file" id="profileInput" accept="image/*">
+            </div>
         </div>
-
-        <p>Course - Year</p>
+        
+        <p class="course-info">BSIT — 1st Year</p>
     </div>
 
+    <!-- Certificates -->
     <div class="section">
         <h2>Achievements / Certifications</h2>
-        <ul id="certList"></ul>
-
-        <input type="file" id="certUpload" multiple>
-        <button onclick="addCertificates()">Upload Certificates</button>
+        <div class="upload-area">
+            <label for="certUpload" class="file-label">Choose Files 📄</label>
+            <input type="file" id="certUpload" accept="image/*" multiple>
+            <button onclick="addCertificates()">Upload Certificates</button>
+        </div>
+        <div id="certContainer" class="grid">
+            <div class="empty-state">No certificates uploaded yet</div>
+        </div>
     </div>
 
+    <!-- Projects -->
     <div class="section">
         <h2>Previous Projects</h2>
-        <ul id="projList"></ul>
-
-        <input type="file" id="projUpload" multiple>
-        <button onclick="addProjects()">Upload Projects</button>
+        <div class="upload-area">
+            <label for="projUpload" class="file-label">Choose Files 🖼️</label>
+            <input type="file" id="projUpload" accept="image/*" multiple>
+            <button onclick="addProjects()">Upload Projects</button>
+        </div>
+        <div id="projContainer" class="grid">
+            <div class="empty-state">No projects uploaded yet</div>
+        </div>
     </div>
 
-    <script>
-        // PROFILE PICTURE PREVIEW
-        document.getElementById('profileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profilePreview').src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // ADD CERTIFICATES
-        function addCertificates() {
-            const files = document.getElementById('certUpload').files;
-            const list = document.getElementById('certList');
-            for (let file of files) {
-                const li = document.createElement('li');
-                li.textContent = file.name;
-                list.appendChild(li);
-            }
-        }
-
-        // ADD PROJECTS
-        function addProjects() {
-            const files = document.getElementById('projUpload').files;
-            const list = document.getElementById('projList');
-            for (let file of files) {
-                const li = document.createElement('li');
-                li.textContent = file.name;
-                list.appendChild(li);
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
