@@ -50,71 +50,77 @@
 </head>
 
 <body>
-    <div class="theme-toggle">
-        <button id="theme-btn">🌙 Dark Mode</button>
+<div class="theme-toggle">
+    <button id="theme-btn">🌙 Dark Mode</button>
+</div>
+
+<header class="hero">
+    <img src="profile.jpg" alt="Profile Photo">
+    <h1>Princess Jelyn Mae S. Villaraz</h1>
+    <p class="subtitle">BS Information Systems – 2nd Year</p>
+</header>
+
+<section class="card">
+    <h2>Achievements / Certifications</h2>
+    <ul>
+        <li>
+            Introduction to Programming with C# —
+            <span class="view-img" onclick="openModal('achievement1.jpg')">View Image</span>
+        </li>
+
+        <li>
+            C++ Lab: Crafting Code in Digital Age —
+            <span class="view-img" onclick="openModal('achievement2.jpg')">View Image</span>
+        </li>
+
+        <li>
+            Java IT Specialist —
+            <span class="view-img" onclick="openModal('achievement3.jpg')">View Image</span>
+        </li>
+    </ul>
+</section>
+
+<section class="card">
+    <h2>Previous Projects</h2>
+
+    <div class="project">
+        <h3>Bambu Vibe Storage Management System</h3>
+        <p>A Java-based inventory system with organized UI and item tracking.</p>
+        <a href="https://github.com/pjmVillaraiz/Bambu-Vibe" class="project-link">Project Link</a>
     </div>
 
-    <header class="hero">
-       <img src="profile.jpg" alt="Profile Photo">
-        <h1>Princess Jelyn Mae S. Villaraz</h1>
-        <p class="subtitle">BS Information Systems – 2nd Year</p>
-    </header>
-
-    <section class="card">
-        <h2>Achievements / Certifications</h2>
-        <ul>
-            <li>
-                Introduction to Programming with C# —
-                <span class="view-img" onclick="openModal('achievement1.jpg')">View Image</span>
-            </li>
-
-            <li>
-                C++ Lab: Crafting Code in Digital Age —
-                <span class="view-img" onclick="openModal('achievement2.jpg')">View Image</span>
-            </li>
-
-            <li>
-                Java IT Specialist —
-                <span class="view-img" onclick="openModal('achievement3.jpg')">View Image</span>
-            </li>
-        </ul>
-    </section>
-
-    <section class="card">
-        <h2>Previous Projects</h2>
-
-        <div class="project">
-            <h3>Bambu Vibe Storage Management System</h3>
-            <p>A Java-based inventory system with organized UI and item tracking.</p>
-            <a href="javascript:void(0)" class="project-link">Project Link</a>
-        </div>
-
-        <div class="project">
-            <h3>Smart Payroll Management System</h3>
-            <p>Automates employee salary computation, deductions, and reports.</p>
-            <a href="javascript:void(0)" class="project-link">Project Link</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 Princess Jelyn Mae S. Villaraz • Portfolio</p>
-    </footer>
-
-    <!-- IMAGE POPUP MODAL -->
-    <div id="imgModal" class="modal close-area" onclick="closeModal()">
-        <img id="modalImg" src="">
+    <div class="project">
+        <h3>Smart Payroll Management System</h3>
+        <p>Automates employee salary computation, deductions, and reports.</p>
+        <a href="https://github.com/pjmVillaraiz/SPR-Devs" class="project-link">Project Link</a>
     </div>
 
-    <script>
-        function openModal(imgSrc) {
-            document.getElementById('modalImg').src = imgSrc;
-            document.getElementById('imgModal').style.display = 'flex';
-        }
-        function closeModal() {
-            document.getElementById('imgModal').style.display = 'none';
-        }
-    </script>
+    <div class="project">
+        <h3>Green Sense</h3>
+        <p>GreenSense is a smart platform designed to help small greenhouse farmers turn everyday transactions into valuable insights. Every time a farmer buys seeds, fertilizers, or soil, or sells crops to a local market, restaurant, or subscription box, GreenSense collects and analyzes the information.</p>
+        <a href="https://pjmvillaraiz.github.io/GreenSense/?fbclid=IwY2xjawOfwmFleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEei5umNEgnM4LsRQBs-_FvIoReyE4aKFBfd27oJCHEJ5YsU0Sj0QfarCXfnIY_aem_nS-IRLBJtugMM-ossjdliA" class="project-link">Project Link</a>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<footer>
+    <p>© 2025 Princess Jelyn Mae S. Villaraz • Portfolio</p>
+</footer>
+
+<!-- IMAGE POPUP MODAL -->
+<div id="imgModal" class="modal close-area" onclick="closeModal()">
+    <img id="modalImg" src="">
+</div>
+
+<script>
+    function openModal(imgSrc) {
+        document.getElementById('modalImg').src = imgSrc;
+        document.getElementById('imgModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('imgModal').style.display = 'none';
+    }
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
