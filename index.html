@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Princess Jelyn Mae S. Villaraiz - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Princess Jelyn Mae S. Villaraz – Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-    <!-- HEADER SECTION -->
-    <div class="header">
-        <h1><b>Princess Jelyn Mae S. Villaraiz</b></h1>
-
-        <img src="profile.jpg" alt="Profile Picture">
-
-        <p><b>BS Information Systems – 2nd Year</b></p>
-
-        <button class="switch-btn" onclick="toggleTheme()">Switch Theme</button>
+    <div class="theme-toggle">
+        <button id="theme-btn">🌙 Dark Mode</button>
     </div>
 
-    <!-- MAIN CONTENT AREA -->
-    <div class="container">
+    <header class="hero">
+        <img src="your-photo.png" alt="Profile Photo" class="profile-img">
+        <h1>Princess Jelyn Mae S. Villaraz</h1>
+        <p class="subtitle">BS Information Systems – 2nd Year</p>
+    </header>
 
-        <!-- LEFT SIDE CONTENT -->
-        <div class="left-section">
+    <section class="card">
+        <h2>Achievements / Certifications</h2>
+        <ul>
+            <li>Introduction to Programming with C# — <a href="#" class="view-img">View Image</a></li>
+            <li>C++ Lab: Crafting Code in Digital Age — <a href="#" class="view-img">View Image</a></li>
+            <li>Java IT Specialist — <a href="#" class="view-img">View Image</a></li>
+        </ul>
+    </section>
 
-            <h2>Achievements / Certifications</h2>
-            <ul>
-                <li>
-                    Introduction to Programming with C# — 
-                    <a href="achievement1.jpg" target="_blank">View Image</a>
-                </li>
-                <li>
-                    C++ Lab: Crafting Code in Digital Age —
-                    <a href="achievement2.jpg" target="_blank">View Image</a>
-                </li>
-                <li>
-                    Java IT Specialist —
-                    <a href="achievement3.jpg" target="_blank">View Image</a>
-                </li>
-            </ul>
+    <section class="card">
+        <h2>Previous Projects</h2>
 
-            <h2>Previous Projects</h2>
-
-            <ul>
-                <li>
-                    <b>Bambu Vibe Storage Management System</b><br>
-                    <small>A Java-based inventory system with organized UI and item tracking.</small><br>
-                    <a href="https://github.com/pjmVillaraiz/Bambu-Vibe" target="_blank">Project Link</a> 
-                </li>
-
-                <br>
-
-                <li>
-                    <b>Smart Payroll Management System</b><br>
-                    <small>Automates employee salary computation, deductions, and reports.</small><br>
-                    <a href="https://github.com/pjmVillaraiz/SPR-Devs" target="_blank">Project Link</a> 
-                </li>
-            </ul>
-
+        <div class="project">
+            <h3>Bambu Vibe Storage Management System</h3>
+            <p>A Java-based inventory system with organized UI and item tracking.</p>
+            <a href="#" class="project-link">Project Link</a>
         </div>
 
-        <!-- EMPTY RIGHT SIDE (for layout spacing) -->
-        <div class="right-space"></div>
+        <div class="project">
+            <h3>Smart Payroll Management System</h3>
+            <p>Automates employee salary computation, deductions, and reports.</p>
+            <a href="#" class="project-link">Project Link</a>
+        </div>
+    </section>
 
-    </div>
+    <footer>
+        <p>© 2025 Princess Jelyn Mae S. Villaraz • Portfolio</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
