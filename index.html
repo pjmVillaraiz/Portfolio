@@ -8,6 +8,45 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ====== SIMPLE POPUP IMAGE MODAL ====== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .modal img {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 10px;
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .modal.close-area {
+            cursor: pointer;
+        }
+
+        /* Profile picture simple formatting */
+        header.hero img {
+            width: 260px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        a.view-img {
+            cursor: pointer;
+            color: #6a4df5;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,21 +63,21 @@
     <section class="card">
         <h2>Achievements / Certifications</h2>
         <ul>
-    <li>
-        Introduction to Programming with C# —
-        <a href="achievement1.jpg" target="_blank" class="view-img">View Image</a>
-    </li>
+            <li>
+                Introduction to Programming with C# —
+                <span class="view-img" onclick="openModal('achievement1.jpg')">View Image</span>
+            </li>
 
-    <li>
-        C++ Lab: Crafting Code in Digital Age —
-        <a href="achievement2.jpg" target="_blank" class="view-img">View Image</a>
-    </li>
+            <li>
+                C++ Lab: Crafting Code in Digital Age —
+                <span class="view-img" onclick="openModal('achievement2.jpg')">View Image</span>
+            </li>
 
-    <li>
-        Java IT Specialist —
-        <a href="achievement3.jpg" target="_blank" class="view-img">View Image</a>
-    </li>
-</ul>
+            <li>
+                Java IT Specialist —
+                <span class="view-img" onclick="openModal('achievement3.jpg')">View Image</span>
+            </li>
+        </ul>
     </section>
 
     <section class="card">
@@ -60,6 +99,21 @@
     <footer>
         <p>© 2025 Princess Jelyn Mae S. Villaraz • Portfolio</p>
     </footer>
+
+    <!-- IMAGE POPUP MODAL -->
+    <div id="imgModal" class="modal close-area" onclick="closeModal()">
+        <img id="modalImg" src="">
+    </div>
+
+    <script>
+        function openModal(imgSrc) {
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('imgModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('imgModal').style.display = 'none';
+        }
+    </script>
 
     <script src="script.js"></script>
 </body>
