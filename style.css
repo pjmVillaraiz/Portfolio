@@ -1,100 +1,134 @@
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --primary: #FFD700;
-    --secondary: #FFA500;
-    --bg: #FFFBF0;
-    --card: #FFFFFF;
-    --text: #2C2C2C;
-}
-
-[data-theme="dark"] {
-    --bg: #1a1a1a;
-    --card: #2a2a2a;
-    --text: #ffffff;
-}
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     background: var(--bg);
     color: var(--text);
+    transition: background 0.4s ease, color 0.4s ease;
+    padding-bottom: 40px;
+}
+
+/* Light & Dark Themes */
+:root {
+    --bg: #f8f1d9;
+    --text: #222;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+body.dark {
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card-bg: rgba(34, 34, 34, 0.6);
+    --shadow: 0 8px 25px rgba(0,0,0,0.7);
+}
+
+/* Theme Button */
+.theme-toggle {
+    text-align: right;
+    padding: 20px;
+}
+
+#theme-btn {
+    background: #111;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
     transition: 0.3s;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+body.dark #theme-btn {
+    background: #fff;
+    color: #111;
 }
 
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    background: var(--primary);
-}
-
+/* Hero Section */
 .hero {
     text-align: center;
-    margin-top: 80px;
+    margin-top: 20px;
 }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    border: 5px solid var(--primary);
+    object-fit: cover;
+    box-shadow: var(--shadow);
+    margin-bottom: 15px;
 }
 
-.section-title {
-    margin: 40px 0 20px;
-    font-size: 26px;
+.subtitle {
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.8;
 }
 
-.about-section,
-.project-card,
-.achievement-card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 12px;
+/* Card Style */
+.card {
+    width: 85%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.8s ease;
+}
+
+.card h2 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+.view-img {
+    color: #d89b00;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.view-img:hover {
+    text-decoration: underline;
+}
+
+/* Projects */
+.project {
     margin-bottom: 20px;
 }
 
-.skills-container {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.project-link {
+    color: #0077ff;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.skill-tag {
-    background: var(--primary);
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-weight: bold;
+.project-link:hover {
+    text-decoration: underline;
 }
 
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.certificate-img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.footer {
+/* Footer */
+footer {
+    margin-top: 30px;
     text-align: center;
-    margin-top: 40px;
+    opacity: 0.7;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
