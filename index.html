@@ -1,133 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Princess Jelyn Mae S. Villaraz – Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* ====== SIMPLE POPUP IMAGE MODAL ====== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .modal img {
-            max-width: 85%;
-            max-height: 85%;
-            border-radius: 10px;
-            border: 3px solid white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
-
-        .modal.close-area {
-            cursor: pointer;
-        }
-
-        /* Profile picture simple formatting */
-        header.hero img {
-            width: 260px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        a.view-img {
-            cursor: pointer;
-            color: #6a4df5;
-            text-decoration: underline;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Jelyn Mae S. Villaraiz - Portfolio</title>
 </head>
-
 <body>
-<div class="theme-toggle">
-    <button id="theme-btn">🌙 Dark Mode</button>
-</div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span id="themeIcon">☾</span>
+    </button>
 
-<header class="hero">
-    <img src="profile.jpg" alt="Profile Photo">
-    <h1>Princess Jelyn Mae S. Villaraz</h1>
-    <p class="subtitle">BS Information Systems – 2nd Year</p>
-</header>
+    <div class="container">
+        <div class="hero">
+            <div class="profile-container">
+                <div class="profile-ring"></div>
+                <img src="profile.jpg" alt="Princess Jelyn Mae S. Villaraiz" class="profile-img" id="profileImg">
+            </div>
+            <h1>Princess Jelyn Mae S. Villaraiz</h1>
+            <p class="subtitle">BS Information Systems – 2nd Year</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="projectCount">4</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="skillCount">5+</div>
+                    <div class="stat-label">Skills</div>
+                </div>
+            </div>
+        </div>
 
-<section class="card">
-    <h2>Achievements / Certifications</h2>
-    <ul>
-        <li>
-            Introduction to Programming with C# —
-            <span class="view-img" onclick="openModal('achievement1.jpg')">View Image</span>
-        </li>
+        <div class="content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-section">
+                <p class="about-text">
+                    Hi! I'm from Davao City and currently a BSIS graduate student at Mapúa Malayan Colleges of Mindanao. I'm the youngest in my family, with my father working abroad as an OFW and my mother taking care of the home. I'm a big fan of manga and manhwa, and I love watching anime in my free time. Music is a constant in my life—I enjoy almost any genre—and I also like playing online games to unwind and challenge myself.
+                </p>
+            </div>
 
-        <li>
-            C++ Lab: Crafting Code in Digital Age —
-            <span class="view-img" onclick="openModal('achievement2.jpg')">View Image</span>
-        </li>
+            <h2 class="section-title">Achievements / Certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <img src="achievement1.jpg" alt="C# Programming Certificate" class="certificate-img">
+                    <div class="achievement-content">
+                        <h3>Introduction to Programming with C#</h3>
+                        <p>Completed comprehensive C# programming course with hands-on projects and best practices</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="achievement2.jpg" alt="C++ Lab Certificate" class="certificate-img">
+                    <div class="achievement-content">
+                        <h3>C++ Lab: Crafting Code in Digital Age</h3>
+                        <p>Advanced C++ development, algorithms, and modern programming techniques</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="achievement3.jpg" alt="Java IT Specialist Certificate" class="certificate-img">
+                    <div class="achievement-content">
+                        <h3>Java IT Specialist</h3>
+                        <p>Certified Java developer with expertise in object-oriented programming</p>
+                    </div>
+                </div>
+            </div>
 
-        <li>
-            Java IT Specialist —
-            <span class="view-img" onclick="openModal('achievement3.jpg')">View Image</span>
-        </li>
-    </ul>
-</section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">C#</div>
+                <div class="skill-tag">C++</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">HTML/CSS</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">Database Management</div>
+                <div class="skill-tag">UI/UX Design</div>
+                <div class="skill-tag">System Analysis</div>
+            </div>
 
-<section class="card">
-    <h2>Previous Projects</h2>
+            <h2 class="section-title">Previous Projects</h2>
+            
+            <div class="project-card">
+                <h3>Bambu Vibe Storage Management System</h3>
+                <p>A Java-based inventory system with organized UI and item tracking. Features real-time updates, comprehensive reporting, and user-friendly interface design.</p>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
 
-    <div class="project">
-        <h3>Bambu Vibe Storage Management System</h3>
-        <p>A Java-based inventory system with organized UI and item tracking.</p>
-        <a href="https://github.com/pjmVillaraiz/Bambu-Vibe" class="project-link">Project Link</a>
+            <div class="project-card">
+                <h3>Smart Payroll Management System</h3>
+                <p>Automates employee salary computation, deductions, and reports. Streamlines HR processes with accurate calculations and detailed analytics.</p>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Green Sense</h3>
+                <p>GreenSense is a smart platform designed to help small greenhouse farmers turn everyday transactions into valuable insights. Every time a farmer buys seeds, fertilizers, or soil, or sells crops to a local market, restaurant, or subscription box, GreenSense collects and analyzes the information.</p>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+
+            <div class="project-card">
+                <h3>M1-FA3</h3>
+                <p>Consist of MP1 and MP2 Project: The ReplaceAll and SearchWord. String manipulation tools with efficient algorithms.</p>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Princess Jelyn Mae S. Villaraiz • Portfolio</p>
+            <p style="margin-top: 10px; color: var(--primary);">Built with passion and dedication</p>
+        </div>
     </div>
-
-    <div class="project">
-        <h3>Smart Payroll Management System</h3>
-        <p>Automates employee salary computation, deductions, and reports.</p>
-        <a href="https://github.com/pjmVillaraiz/SPR-Devs" class="project-link">Project Link</a>
-    </div>
-
-    <div class="project">
-        <h3>Green Sense</h3>
-        <p>GreenSense is a smart platform designed to help small greenhouse farmers turn everyday transactions into valuable insights. Every time a farmer buys seeds, fertilizers, or soil, or sells crops to a local market, restaurant, or subscription box, GreenSense collects and analyzes the information.</p>
-        <a href="https://pjmvillaraiz.github.io/GreenSense/?fbclid=IwY2xjawOfwmFleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEei5umNEgnM4LsRQBs-_FvIoReyE4aKFBfd27oJCHEJ5YsU0Sj0QfarCXfnIY_aem_nS-IRLBJtugMM-ossjdliA" class="project-link">Project Link</a>
-    </div>
-     <div class="project">
-        <h3>M1-FA3</h3>
-        <p>Consist of MP1 and MP2 Project The ReplaceAll and SearchWord.</p>
-<a href="https://pjmvillaraiz.github.io/M1-FA3/" class="project-link">
-    Project Link
-</a>
-    </div>
-</section>
-
-<footer>
-    <p>© 2025 Princess Jelyn Mae S. Villaraz • Portfolio</p>
-</footer>
-
-<!-- IMAGE POPUP MODAL -->
-<div id="imgModal" class="modal close-area" onclick="closeModal()">
-    <img id="modalImg" src="">
-</div>
-
-<script>
-    function openModal(imgSrc) {
-        document.getElementById('modalImg').src = imgSrc;
-        document.getElementById('imgModal').style.display = 'flex';
-    }
-    function closeModal() {
-        document.getElementById('imgModal').style.display = 'none';
-    }
-</script>
-
-<script src="script.js"></script>
 </body>
 </html>
