@@ -1,25 +1,21 @@
-// Theme toggle
-const themeBtn = document.getElementById("themeToggle");
-const icon = document.getElementById("themeIcon");
-
-themeBtn.addEventListener("click", () => {
-    const html = document.documentElement;
-
-    if (html.getAttribute("data-theme") === "dark") {
-        html.removeAttribute("data-theme");
-        icon.textContent = "☾";
-        localStorage.setItem("theme", "light");
-    } else {
-        html.setAttribute("data-theme", "dark");
-        icon.textContent = "☀";
-        localStorage.setItem("theme", "dark");
-    }
-});
+const btn = document.getElementById("theme-btn");
+const body = document.body;
 
 // Load saved theme
-window.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-        icon.textContent = "☀";
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+    btn.textContent = "☀️ Light Mode";
+}
+
+// Toggle Theme
+btn.addEventListener("click", () => {
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+        btn.textContent = "☀️ Light Mode";
+        localStorage.setItem("theme", "dark");
+    } else {
+        btn.textContent = "🌙 Dark Mode";
+        localStorage.setItem("theme", "light");
     }
 });
