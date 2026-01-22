@@ -164,6 +164,7 @@
             box-shadow: 0 5px 15px var(--shadow);
             transition: all 0.3s ease;
             cursor: pointer;
+            user-select: none;
         }
 
         .stat-item:hover {
@@ -406,52 +407,13 @@
         }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
-            50% { transform: translateX(-50%) scale(1.2); opacity: 0.5; }
-        }
-
-        @keyframes expand {
-            from { width: 0; }
-            to { width: 100%; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; } 50% { transform: translateX(-50%) scale(1.2); opacity: 0.5; } }
+        @keyframes expand { from { width: 0; } to { width: 100%; } }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -468,30 +430,16 @@
         }
 
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 5px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary);
-        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
 
         /* Particles */
-        .particle {
-            position: fixed;
-            pointer-events: none;
-            animation: particleFloat 3s ease-in-out infinite;
-        }
-
+        .particle { position: fixed; pointer-events: none; animation: particleFloat 3s ease-in-out infinite; }
         @keyframes particleFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
             50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
@@ -512,16 +460,17 @@
         <h1>Princess Jelyn Mae S. Villaraiz</h1>
         <p class="subtitle">BS Information Systems – 2nd Year</p>
 
+        <!-- ✅ ADDED data-target so these scroll to the correct sections -->
         <div class="stats-container">
-            <div class="stat-item">
+            <div class="stat-item" data-target="#projectsSection" role="button" tabindex="0">
                 <div class="stat-number" id="projectCount">4</div>
                 <div class="stat-label">Projects</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" data-target="#achievementsSection" role="button" tabindex="0">
                 <div class="stat-number">11</div>
                 <div class="stat-label">Certifications</div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" data-target="#skillsSection" role="button" tabindex="0">
                 <div class="stat-number" id="skillCount">5+</div>
                 <div class="stat-label">Skills</div>
             </div>
@@ -529,14 +478,14 @@
     </div>
 
     <div class="content">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title" id="aboutSection">About Me</h2>
         <div class="about-section">
             <p class="about-text">
                 Hi! This is Jelyn, I'm from Davao City and currently studying at Mapúa Malayan Colleges of Mindanao. I'm the youngest in my family, with my father working abroad as an OFW and my mother taking care of the home. I'm a big fan of manga and manhwa, and I love watching anime in my free time. Music is a constant in my life I enjoy almost any genre and I also like playing online games to unwind and challenge myself.
             </p>
         </div>
 
-        <h2 class="section-title">Achievements / Certifications</h2>
+        <h2 class="section-title" id="achievementsSection">Achievements / Certifications</h2>
         <div class="achievements-grid">
             <div class="achievement-card">
                 <img src="achievement1.jpg" alt="C# Programming Certificate" class="certificate-img">
@@ -617,7 +566,7 @@
             </div>
         </div>
 
-        <h2 class="section-title">Technical Skills</h2>
+        <h2 class="section-title" id="skillsSection">Technical Skills</h2>
         <div class="skills-container">
             <div class="skill-tag">C#</div>
             <div class="skill-tag">C++</div>
@@ -629,30 +578,30 @@
             <div class="skill-tag">System Analysis</div>
         </div>
 
-        <h2 class="section-title">Previous Projects</h2>
+        <h2 class="section-title" id="projectsSection">Previous Projects</h2>
 
         <div class="project-card">
             <h3>Bambu Vibe Storage Management System</h3>
             <p>A Java-based inventory system with organized UI and item tracking. Features real-time updates, comprehensive reporting, and user-friendly interface design.</p>
-            <a href="https://github.com/pjmVillaraiz/Bambu-Vibe" class="project-link">View Project →</a>
+            <a href="https://github.com/pjmVillaraiz/Bambu-Vibe" class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
         </div>
 
         <div class="project-card">
             <h3>Smart Payroll Management System</h3>
             <p>Automates employee salary computation, deductions, and reports. Streamlines HR processes with accurate calculations and detailed analytics.</p>
-            <a href="https://github.com/pjmVillaraiz/SPR-Devs" class="project-link">View Project →</a>
+            <a href="https://github.com/pjmVillaraiz/SPR-Devs" class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
         </div>
 
         <div class="project-card">
             <h3>Green Sense</h3>
             <p>GreenSense is a smart platform designed to help small greenhouse farmers turn everyday transactions into valuable insights. Every time a farmer buys seeds, fertilizers, or soil, or sells crops to a local market, restaurant, or subscription box, GreenSense collects and analyzes the information.</p>
-            <a href="https://pjmvillaraiz.github.io/GreenSense/" class="project-link">View Project →</a>
+            <a href="https://pjmvillaraiz.github.io/GreenSense/" class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
         </div>
 
         <div class="project-card">
             <h3>M1-FA3</h3>
             <p>Consist of MP1 and MP2 Project: The ReplaceAll and SearchWord. String manipulation tools with efficient algorithms.</p>
-            <a href="https://pjmvillaraiz.github.io/M1-FA3/" class="project-link">View Project →</a>
+            <a href="https://pjmvillaraiz.github.io/M1-FA3/" class="project-link" target="_blank" rel="noopener noreferrer">View Project →</a>
         </div>
     </div>
 
@@ -680,46 +629,63 @@
         }
     }
 
-    // Load saved theme
+    // Load saved theme + setup click handlers after DOM is ready
     window.addEventListener('DOMContentLoaded', () => {
+        // Load saved theme
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             document.getElementById('themeIcon').textContent = '☀';
         }
-    });
 
-    // Animated counter
-    function animateCounter(id, target) {
-        let current = 0;
-        const element = document.getElementById(id);
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current);
-            }
-        }, 30);
-    }
-
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+        // ✅ Stats click -> smooth scroll
+        document.querySelectorAll('.stat-item[data-target]').forEach(item => {
+            const go = () => {
+                const target = document.querySelector(item.dataset.target);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+            item.addEventListener('click', go);
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') go();
+            });
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.project-card, .achievement-card, .skill-tag').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease';
-        observer.observe(el);
+        // ✅ Achievement click -> open the certificate image in new tab
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('.certificate-img');
+                if (!img) return;
+                window.open(img.src, '_blank');
+            });
+        });
+
+        // ✅ Project card click -> open its "View Project" link (but do NOT break clicking the button)
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // if user clicked the link itself, let it work normally
+                if (e.target.closest('.project-link')) return;
+
+                const link = card.querySelector('.project-link');
+                if (link && link.href) window.open(link.href, '_blank');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card, .achievement-card, .skill-tag').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
     });
 
     // Create floating particles
@@ -749,17 +715,6 @@
         for(let i = 0; i < 5; i++) {
             setTimeout(createParticle, i * 100);
         }
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
     });
 </script>
 </body>
