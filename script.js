@@ -1,21 +1,33 @@
-const btn = document.getElementById("theme-btn");
-const body = document.body;
+window.addEventListener("DOMContentLoaded", () => {
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark");
-    btn.textContent = "☀️ Light Mode";
-}
+  const projectCount = document.querySelectorAll(".project-card").length;
+  const projectCountEl = document.getElementById("projectCount");
+  if (projectCountEl) projectCountEl.textContent = projectCount;
 
-// Toggle Theme
-btn.addEventListener("click", () => {
-    body.classList.toggle("dark");
+ 
+  const html = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.getElementById("themeIcon");
 
-    if (body.classList.contains("dark")) {
-        btn.textContent = "☀️ Light Mode";
-        localStorage.setItem("theme", "dark");
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      if (themeIcon) themeIcon.textContent = "☀";
+      localStorage.setItem("theme", "dark");
     } else {
-        btn.textContent = "🌙 Dark Mode";
-        localStorage.setItem("theme", "light");
+      html.removeAttribute("data-theme");
+      if (themeIcon) themeIcon.textContent = "☾";
+      localStorage.setItem("theme", "light");
     }
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isDark = html.getAttribute("data-theme") === "dark";
+      applyTheme(isDark ? "light" : "dark");
+    });
+  }
 });
