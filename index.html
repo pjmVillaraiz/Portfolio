@@ -1,779 +1,1496 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Princess Jelyn Mae Villaraiz — Player Profile</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Princess Jelyn Mae Villaraiz — Player Profile</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-:root{
-  --bg-deep:#0c130d;
-  --bg-panel:#1a2617;
-  --bg-panel-2:#15200f;
-  --grass:#6abe30;
-  --grass-dark:#3e7a1f;
-  --dirt:#7a4a2a;
-  --dirt-dark:#4a2e17;
-  --stone:#8b8b8b;
-  --stone-dark:#454545;
-  --gold:#ffcc33;
-  --diamond:#55e0d0;
-  --diamond-dark:#1f7c73;
-  --redstone:#e04040;
-  --xp:#8ce23a;
-  --text-light:#eae3d2;
-  --text-muted:#9fb08e;
-  --text-dark:#2a2013;
-  --parchment:#e4c687;
-  --bg-grid:#111c13;
-}
+    :root {
+      --bg-deep: #0c130d;
+      --bg-panel: #1a2617;
+      --bg-panel-2: #15200f;
+      --grass: #6abe30;
+      --grass-dark: #3e7a1f;
+      --dirt: #7a4a2a;
+      --dirt-dark: #4a2e17;
+      --stone: #8b8b8b;
+      --stone-dark: #454545;
+      --gold: #ffcc33;
+      --diamond: #55e0d0;
+      --diamond-dark: #1f7c73;
+      --redstone: #e04040;
+      --xp: #8ce23a;
+      --text-light: #eae3d2;
+      --text-muted: #9fb08e;
+      --text-dark: #2a2013;
+      --parchment: #e4c687;
+      --bg-grid: #111c13;
+    }
 
-/* Light theme overrides (Overworld) */
-body.light-theme {
-  --bg-deep:#fffdf0; /* soft pastel yellow */
-  --bg-grid:#fff8d6; /* repeating pastel yellow grid lines */
-  --bg-panel:#fcfbf4; /* very soft cream */
-  --bg-panel-2:#f5f3e9; /* soft sandy beige */
-  --grass:#dfc71b; /* gold wheat/grass */
-  --grass-dark:#9e8b11;
-  --dirt:#8d7a3c; /* sandy clay dirt */
-  --dirt-dark:#5c4f21;
-  --stone:#b5b5b5;
-  --stone-dark:#8e8e8e;
-  --gold:#dfb115;
-  --diamond:#38b4a6;
-  --diamond-dark:#1e7067;
-  --redstone:#c9302c;
-  --xp:#dfc71b;
-  --text-light:#2c2514; /* dark cocoa text for high contrast */
-  --text-muted:#6b5d43; /* muted cocoa */
-  --text-dark:#2a2013; /* buttons still keep dark text */
-  --parchment:#fdf5e2; /* light parchment */
-}
+    /* Light theme overrides (Overworld) */
+    body.light-theme {
+      --bg-deep: #fffdf0;
+      /* soft pastel yellow */
+      --bg-grid: #fff8d6;
+      /* repeating pastel yellow grid lines */
+      --bg-panel: #fcfbf4;
+      /* very soft cream */
+      --bg-panel-2: #f5f3e9;
+      /* soft sandy beige */
+      --grass: #dfc71b;
+      /* gold wheat/grass */
+      --grass-dark: #9e8b11;
+      --dirt: #8d7a3c;
+      /* sandy clay dirt */
+      --dirt-dark: #5c4f21;
+      --stone: #b5b5b5;
+      --stone-dark: #8e8e8e;
+      --gold: #dfb115;
+      --diamond: #38b4a6;
+      --diamond-dark: #1e7067;
+      --redstone: #c9302c;
+      --xp: #dfc71b;
+      --text-light: #2c2514;
+      /* dark cocoa text for high contrast */
+      --text-muted: #6b5d43;
+      /* muted cocoa */
+      --text-dark: #2a2013;
+      /* buttons still keep dark text */
+      --parchment: #fdf5e2;
+      /* light parchment */
+    }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  background:
-    repeating-conic-gradient(var(--bg-deep) 0% 25%, var(--bg-grid) 0% 50%) 0 0/26px 26px;
-  color:var(--text-light);
-  font-family:'VT323', monospace;
-  font-size:20px;
-  line-height:1.5;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-h1,h2,h3,.pf{font-family:'Press Start 2P', monospace; text-transform:uppercase; letter-spacing:1px;}
+    body {
+      margin: 0;
+      background:
+        repeating-conic-gradient(var(--bg-deep) 0% 25%, var(--bg-grid) 0% 50%) 0 0/26px 26px;
+      color: var(--text-light);
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.5;
+    }
 
-.wrap{max-width:980px;margin:0 auto;padding:20px 16px 100px;}
+    h1,
+    h2,
+    h3,
+    .pf {
+      font-family: 'Press Start 2P', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-/* ---------------- pixel panel / button system ---------------- */
-.panel{
-  background:var(--bg-panel);
-  border:4px solid #000;
-  box-shadow:
-    inset 3px 3px 0 rgba(255,255,255,0.12),
-    inset -3px -3px 0 rgba(0,0,0,0.5),
-    6px 6px 0 rgba(0,0,0,0.55);
-  padding:20px;
-}
-.btn{
-  font-family:'Press Start 2P';
-  font-size:10.5px;
-  color:var(--text-dark);
-  background:var(--gold);
-  border:3px solid #000;
-  padding:11px 14px;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,0.6), inset -2px -2px 0 rgba(0,0,0,0.35), 4px 4px 0 rgba(0,0,0,0.6);
-  cursor:pointer; text-decoration:none; display:inline-block;
-  transition:transform .05s linear; margin:4px 6px 4px 0;
-}
-.btn:hover{background:#ffd966;}
-.btn:active{transform:translate(3px,3px); box-shadow:inset 2px 2px 0 rgba(0,0,0,0.35);}
-.btn.alt{background:var(--diamond); }
-.btn.alt:hover{background:#7ff0e2;}
-.btn.ghost{background:transparent;color:var(--text-light);box-shadow:inset 2px 2px 0 rgba(255,255,255,0.15),inset -2px -2px 0 rgba(0,0,0,0.5),4px 4px 0 rgba(0,0,0,0.5);}
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 16px 100px;
+    }
 
-/* section chip header */
-.chip{
-  font-size:13px;color:var(--grass);background:#000;
-  display:inline-block;padding:8px 12px;border:3px solid #000;
-  box-shadow:3px 3px 0 rgba(0,0,0,0.5); margin-bottom:16px;
-}
-.section{margin-top:46px;}
-.reveal{opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease;}
-.reveal.in{opacity:1; transform:translateY(0);}
+    /* ---------------- pixel panel / button system ---------------- */
+    .panel {
+      background: var(--bg-panel);
+      border: 4px solid #000;
+      box-shadow:
+        inset 3px 3px 0 rgba(255, 255, 255, 0.12),
+        inset -3px -3px 0 rgba(0, 0, 0, 0.5),
+        6px 6px 0 rgba(0, 0, 0, 0.55);
+      padding: 20px;
+    }
 
-/* ---------------- top bar / terminal launcher ---------------- */
-.topbar{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  background:#000; border-bottom:3px solid var(--grass-dark);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:8px 14px;
-}
-.topbar .brand{font-family:'Press Start 2P'; font-size:11px; color:var(--gold);}
-.topbar .hint{font-size:15px; color:var(--text-muted);}
-.topbar .hint kbd{background:#2a2a2a;border:2px solid #555;padding:1px 6px;color:#fff;font-family:monospace;}
+    .btn {
+      font-family: 'Press Start 2P';
+      font-size: 10.5px;
+      color: var(--text-dark);
+      background: var(--gold);
+      border: 3px solid #000;
+      padding: 11px 14px;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.6), inset -2px -2px 0 rgba(0, 0, 0, 0.35), 4px 4px 0 rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .05s linear;
+      margin: 4px 6px 4px 0;
+    }
 
-body{padding-top:44px;}
+    .btn:hover {
+      background: #ffd966;
+    }
 
-/* ---------------- HERO / player profile ---------------- */
-.hero{
-  background:
-    linear-gradient(var(--dirt) 0 55%, var(--dirt-dark) 55% 100%),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.12) 0 8px, transparent 8px 16px);
-  border:4px solid #000; box-shadow:6px 6px 0 rgba(0,0,0,0.55);
-  padding:30px 22px 24px; position:relative; margin-top:10px;
-}
-.hero::before{
-  content:""; position:absolute; top:-4px; left:0; right:0; height:14px;
-  background:linear-gradient(var(--grass) 0 60%, var(--grass-dark) 60% 100%),
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.15) 0 8px, transparent 8px 16px);
-  border-bottom:4px solid #000;
-}
-.hero-grid{display:flex; gap:26px; flex-wrap:wrap; align-items:center;}
-.avatar{
-  width:110px;height:110px;flex:none; border:4px solid #000; position:relative;
-  box-shadow:inset 3px 3px 0 rgba(255,255,255,0.25), inset -3px -3px 0 rgba(0,0,0,0.4), 4px 4px 0 rgba(0,0,0,0.55);
-  background:#111;
-  overflow:hidden;
-}
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.level-badge{
-  font-family:'Press Start 2P'; font-size:11px; color:#000; background:var(--gold);
-  border:3px solid #000; padding:6px 10px; display:inline-block; margin-bottom:10px;
-  box-shadow:3px 3px 0 rgba(0,0,0,0.5);
-}
-.pname{font-size:19px; color:var(--gold); text-shadow:2px 2px 0 #000; margin:0 0 6px;}
-.proles{font-size:17px; color:var(--text-light); opacity:.9; margin:0 0 12px;}
-.proles .sep{color:var(--diamond); margin:0 6px;}
-.quest-inline{font-size:15px; color:var(--text-muted);}
-.quest-inline b{color:var(--xp);}
+    .btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.35);
+    }
 
-.xp-wrap{margin-top:16px;}
-.xp-label{display:flex; justify-content:space-between; font-size:14px; color:var(--text-muted); margin-bottom:4px;}
-.xp-bar{
-  height:16px; background:#111; border:3px solid #000;
-  box-shadow:inset 2px 2px 0 rgba(0,0,0,0.6);
-}
-.xp-fill{
-  height:100%; width:0%; background:repeating-linear-gradient(90deg, var(--xp) 0 8px, #74c92c 8px 16px);
-  transition:width 1.4s cubic-bezier(.2,.8,.3,1);
-}
+    .btn.alt {
+      background: var(--diamond);
+    }
 
-.hero-actions{margin-top:18px;}
+    .btn.alt:hover {
+      background: #7ff0e2;
+    }
 
-/* ---------------- stats ---------------- */
-.stats-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px;}
-.stat{
-  background:var(--stone-dark); border:3px solid #000; text-align:center; padding:16px 10px;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,0.12), inset -2px -2px 0 rgba(0,0,0,0.5);
-}
-.stat .icon{
-  height:36px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:8px;
-}
-.stat .num{font-family:'Press Start 2P'; font-size:17px; color:var(--diamond); margin:8px 0 4px; }
-.stat .lab{font-size:13px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.5px;}
+    .btn.ghost {
+      background: transparent;
+      color: var(--text-light);
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.15), inset -2px -2px 0 rgba(0, 0, 0, 0.5), 4px 4px 0 rgba(0, 0, 0, 0.5);
+    }
 
-/* ---------------- backstory / quest book ---------------- */
-.book{
-  background:var(--parchment,#e4c687); color:var(--text-dark);
-  border:5px solid var(--dirt-dark); box-shadow:6px 6px 0 rgba(0,0,0,0.5);
-  padding:22px 24px; font-size:19px;
-}
-.book b{color:var(--dirt-dark);}
-.two-col{display:grid; grid-template-columns:1.3fr 1fr; gap:16px;}
-@media(max-width:720px){.two-col{grid-template-columns:1fr;}}
+    /* section chip header */
+    .chip {
+      font-size: 13px;
+      color: var(--grass);
+      background: #000;
+      display: inline-block;
+      padding: 8px 12px;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
 
-.quest-book-list{list-style:none; margin:10px 0 0; padding:0;}
-.quest-book-list li{margin-bottom:8px; padding-left:22px; position:relative;}
-.quest-book-list li::before{content:"◆"; position:absolute; left:0; color:var(--grass-dark);}
+    .section {
+      margin-top: 46px;
+    }
 
-/* ---------------- inventory / skills ---------------- */
-.inventory{display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:10px;}
-.slot{
-  aspect-ratio:1; background:var(--stone-dark); border:3px solid #000;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,0.15), inset -2px -2px 0 rgba(0,0,0,0.5);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; cursor:pointer; position:relative; padding:6px;
-}
-.slot:hover{outline:2px solid var(--gold); outline-offset:-2px;}
-.slot .glyph{width:32px;height:32px;margin-bottom:6px; background:linear-gradient(135deg,var(--diamond),var(--diamond-dark)); border:2px solid #000;}
-.slot .label{font-size:12.5px; line-height:1.1;}
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
 
-.item-panel{
-  margin-top:16px; display:none;
-}
-.item-panel.show{display:block;}
-.item-card{
-  background:#111; border:3px solid var(--diamond); box-shadow:4px 4px 0 rgba(0,0,0,0.5);
-  padding:16px; display:flex; gap:14px; align-items:flex-start;
-}
-.item-card .glyph-lg{width:52px;height:52px;flex:none; background:linear-gradient(135deg,var(--diamond),var(--diamond-dark)); border:2px solid #000;}
-.item-card h3{font-size:13px; color:var(--diamond); margin:0 0 6px;}
-.item-card .lvl{font-size:14px; color:var(--gold); margin-bottom:6px;}
-.item-card .desc{font-size:16px; color:var(--text-muted);}
-.mini-xp{height:8px;background:#000;border:2px solid #000;margin-top:8px;}
-.mini-xp i{display:block;height:100%;background:var(--xp);}
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* ---------------- crafting table ---------------- */
-.craft-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:230px;}
-.craft-cell{aspect-ratio:1; background:var(--stone-dark); border:2px solid #000; display:flex;align-items:center;justify-content:center; font-size:12px; text-align:center; padding:4px;}
-.craft-arrow{font-family:'Press Start 2P'; font-size:20px; color:var(--gold); display:flex; align-items:center; justify-content:center;}
-.craft-result{
-  width:90px;height:90px; background:linear-gradient(135deg,var(--gold),#c9971f); border:3px solid #000;
-  display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px; font-family:'Press Start 2P'; color:#000; padding:6px;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,0.5);
-}
-.craft-row{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+    /* ---------------- top bar / terminal launcher ---------------- */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: #000;
+      border-bottom: 3px solid var(--grass-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+    }
 
-/* ---------------- achievements ---------------- */
-.ach-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px;}
-.ach{
-  display:flex; gap:12px; background:#26261f; border:3px solid #000;
-  box-shadow:4px 4px 0 rgba(0,0,0,0.5); padding:12px; position:relative; overflow:hidden;
-  align-items:center;
-  cursor:pointer;
-  transition:transform 0.1s ease;
-  min-height:86px;
-}
-.ach:hover{
-  transform:scale(1.02);
-  border-color:var(--gold);
-}
-.ach::after{
-  content:"UNLOCKED"; position:absolute; top:6px; right:-30px; transform:rotate(35deg);
-  font-family:'Press Start 2P'; font-size:8px; background:var(--grass-dark); color:#fff;
-  padding:3px 34px; opacity:0; transition:opacity .25s ease;
-  pointer-events:none;
-}
-.ach:hover::after{opacity:1;}
-.ach-img{
-  width:48px;height:48px;flex:none; border:2px solid #000;
-  object-fit:cover;
-  box-shadow:inset 1px 1px 0 rgba(255,255,255,0.25);
-  background:var(--stone-dark);
-}
-.ach-icon{width:36px;height:36px;flex:none; background:linear-gradient(135deg,var(--gold),#c9971f); border:2px solid #000; box-shadow:inset 2px 2px 0 rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; font-size:18px;}
-.ach .tag{font-family:'Press Start 2P'; font-size:8.5px; color:var(--gold); display:block; margin-bottom:4px;}
-.ach .title{font-size:17px; color:#fff; font-weight:bold; line-height:1.25;}
-.ach .xp{font-size:13px; color:var(--xp); margin-top:2px;}
+    .topbar .brand {
+      font-family: 'Press Start 2P';
+      font-size: 11px;
+      color: var(--gold);
+    }
 
-/* ---------------- certificate modal ---------------- */
-.cert-modal{
-  position:fixed; inset:0; background:rgba(0,0,0,0.85); display:none; align-items:center; justify-content:center; z-index:110; padding:16px;
-}
-.cert-modal.show{display:flex;}
-.cert-modal-content{
-  width:100%; max-width:800px; background:#1a2617; border:4px solid var(--gold);
-  box-shadow:8px 8px 0 rgba(0,0,0,0.7);
-  font-family:'VT323'; font-size:20px; color:var(--text-light);
-}
-.cert-modal-header{
-  background:var(--gold); color:#000; font-family:'Press Start 2P'; font-size:11px;
-  padding:8px 12px; display:flex; justify-content:space-between; align-items:center;
-}
-.cert-modal-header button{background:none;border:none;color:#000;font-family:'Press Start 2P';font-size:12px;cursor:pointer;}
-.cert-modal-body{padding:16px; text-align:center; max-height:80vh; overflow-y:auto;}
-.cert-modal-body img{max-width:100%; max-height:70vh; height:auto; border:3px solid #000; box-shadow:4px 4px 0 rgba(0,0,0,0.5); background:#000;}
+    .topbar .hint {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
 
-/* ---------------- quest log ---------------- */
-.quest{
-  background:var(--bg-panel-2); border:3px solid #000; box-shadow:4px 4px 0 rgba(0,0,0,0.5);
-  padding:18px 20px; margin-bottom:16px; border-left:6px solid var(--grass);
-}
-.quest-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;}
-.quest .qtitle{font-family:'Press Start 2P'; font-size:12.5px; color:var(--gold);}
-.quest .stars{color:var(--gold); font-size:15px;}
-.quest .qdesc{font-size:18px; margin:10px 0 12px; color:var(--text-light);}
-.tagrow{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
-.tagrow span{background:var(--diamond-dark); color:#eafffb; font-size:12.5px; border:2px solid #000; padding:3px 8px;}
-.quest-status{font-size:12px; font-family:'Press Start 2P'; color:var(--xp); margin-bottom:8px;}
+    .topbar .hint kbd {
+      background: #2a2a2a;
+      border: 2px solid #555;
+      padding: 1px 6px;
+      color: #fff;
+      font-family: monospace;
+    }
 
-/* ---------------- timeline ---------------- */
-.timeline{position:relative; padding-left:26px;}
-.timeline::before{content:"";position:absolute; left:8px; top:0; bottom:0; width:4px; background:var(--stone-dark);}
-.tl-item{position:relative; margin-bottom:26px;}
-.tl-item::before{
-  content:""; position:absolute; left:-26px; top:2px; width:16px;height:16px; background:var(--grass); border:3px solid #000;
-}
-.tl-item h3{font-size:12px; color:var(--gold); margin:0 0 4px;}
-.tl-item p{font-size:16px; color:var(--text-muted); margin:0;}
+    body {
+      padding-top: 44px;
+    }
 
-/* ---------------- why hire grid ---------------- */
-.why-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px;}
-.why-card{
-  background:var(--stone-dark); border:3px solid #000; text-align:center; padding:14px 8px; font-size:14px;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,0.1), inset -2px -2px 0 rgba(0,0,0,0.5);
-}
+    /* ---------------- HERO / player profile ---------------- */
+    .hero {
+      background:
+        linear-gradient(var(--dirt) 0 55%, var(--dirt-dark) 55% 100%),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 8px, transparent 8px 16px);
+      border: 4px solid #000;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
+      padding: 30px 22px 24px;
+      position: relative;
+      margin-top: 10px;
+    }
 
-/* ---------------- recruiter dashboard ---------------- */
-.dash{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-@media(max-width:640px){.dash{grid-template-columns:1fr;}}
-.dash .col h3{font-size:12px; color:var(--diamond); margin:0 0 10px;}
-.fact{display:flex; align-items:center; gap:8px; font-size:16px; margin-bottom:8px; color:var(--text-light);}
-.fact .dot{width:10px;height:10px; background:var(--xp); border:2px solid #000; flex:none;}
-.linklist a{display:block; color:var(--diamond); text-decoration:none; font-size:17px; margin-bottom:8px;}
-.linklist a:hover{text-decoration:underline;}
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: linear-gradient(var(--grass) 0 60%, var(--grass-dark) 60% 100%),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.15) 0 8px, transparent 8px 16px);
+      border-bottom: 4px solid #000;
+    }
 
-/* ---------------- portal contact ---------------- */
-.portal-wrap{text-align:center; padding:30px 10px;}
-.portal{
-  width:150px; height:190px; margin:0 auto 20px; position:relative; cursor:pointer;
-  background:radial-gradient(ellipse at center, #7a2ecf 0%, #2a0845 70%, #000 100%);
-  border:6px solid #1a1a1a; box-shadow:0 0 24px 6px rgba(140,60,220,0.55);
-  animation:portalPulse 2.4s ease-in-out infinite;
-}
-@keyframes portalPulse{0%,100%{box-shadow:0 0 18px 4px rgba(140,60,220,0.45);}50%{box-shadow:0 0 30px 10px rgba(180,100,255,0.7);}}
-.contact-form{max-width:440px; margin:0 auto; text-align:left; display:none;}
-.contact-form.show{display:block;}
-.contact-form input, .contact-form textarea{
-  width:100%; background:#111; border:3px solid #000; color:var(--text-light); font-family:'VT323'; font-size:17px;
-  padding:9px 10px; margin-bottom:10px; box-shadow:inset 2px 2px 0 rgba(0,0,0,0.6);
-}
-.contact-form textarea{min-height:90px;}
+    .hero-grid {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-footer{text-align:center; margin-top:50px; color:var(--text-muted); font-size:16px;}
-footer .heart{color:#ff5c5c;}
-.footer-badges{display:flex; justify-content:center; gap:8px; margin-top:10px; flex-wrap:wrap;}
-.footer-badges span{background:var(--stone-dark); border:2px solid #000; padding:3px 8px; font-size:12px;}
+    .avatar {
+      width: 110px;
+      height: 110px;
+      flex: none;
+      border: 4px solid #000;
+      position: relative;
+      box-shadow: inset 3px 3px 0 rgba(255, 255, 255, 0.25), inset -3px -3px 0 rgba(0, 0, 0, 0.4), 4px 4px 0 rgba(0, 0, 0, 0.55);
+      background: #111;
+      overflow: hidden;
+    }
 
-/* ---------------- terminal ---------------- */
-.term-overlay{
-  position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; align-items:center; justify-content:center; z-index:100; padding:16px;
-}
-.term-overlay.show{display:flex;}
-.term{
-  width:100%; max-width:640px; background:#0b0b0b; border:4px solid var(--grass-dark);
-  box-shadow:8px 8px 0 rgba(0,0,0,0.7);
-  font-family:'VT323'; font-size:19px; color:#c9f7c9;
-}
-.term-head{
-  background:var(--grass-dark); color:#fff; font-family:'Press Start 2P'; font-size:11px;
-  padding:8px 12px; display:flex; justify-content:space-between; align-items:center;
-}
-.term-head button{background:none;border:none;color:#fff;font-family:'Press Start 2P';font-size:12px;cursor:pointer;}
-.term-body{height:340px; overflow-y:auto; padding:12px 14px;}
-.term-body div{white-space:pre-wrap; margin-bottom:2px;}
-.term-body .cmdline{color:var(--gold);}
-.term-input-row{display:flex; align-items:center; border-top:2px solid #1c1c1c; padding:8px 12px;}
-.term-input-row span{color:var(--gold); margin-right:6px;}
-.term-input-row input{
-  flex:1; background:transparent; border:none; outline:none; color:#c9f7c9; font-family:'VT323'; font-size:19px;
-}
-</style>
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .level-badge {
+      font-family: 'Press Start 2P';
+      font-size: 11px;
+      color: #000;
+      background: var(--gold);
+      border: 3px solid #000;
+      padding: 6px 10px;
+      display: inline-block;
+      margin-bottom: 10px;
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .pname {
+      font-size: 19px;
+      color: var(--gold);
+      text-shadow: 2px 2px 0 #000;
+      margin: 0 0 6px;
+    }
+
+    .proles {
+      font-size: 17px;
+      color: var(--text-light);
+      opacity: .9;
+      margin: 0 0 12px;
+    }
+
+    .proles .sep {
+      color: var(--diamond);
+      margin: 0 6px;
+    }
+
+    .quest-inline {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .quest-inline b {
+      color: var(--xp);
+    }
+
+    .xp-wrap {
+      margin-top: 16px;
+    }
+
+    .xp-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .xp-bar {
+      height: 16px;
+      background: #111;
+      border: 3px solid #000;
+      box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .xp-fill {
+      height: 100%;
+      width: 0%;
+      background: repeating-linear-gradient(90deg, var(--xp) 0 8px, #74c92c 8px 16px);
+      transition: width 1.4s cubic-bezier(.2, .8, .3, 1);
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+    }
+
+    /* ---------------- stats ---------------- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      background: var(--stone-dark);
+      border: 3px solid #000;
+      text-align: center;
+      padding: 16px 10px;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.12), inset -2px -2px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .stat .icon {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .stat .num {
+      font-family: 'Press Start 2P';
+      font-size: 17px;
+      color: var(--diamond);
+      margin: 8px 0 4px;
+    }
+
+    .stat .lab {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    /* ---------------- backstory / quest book ---------------- */
+    .book {
+      background: var(--parchment, #e4c687);
+      color: var(--text-dark);
+      border: 5px solid var(--dirt-dark);
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+      padding: 22px 24px;
+      font-size: 19px;
+    }
+
+    .book b {
+      color: var(--dirt-dark);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+    }
+
+    @media(max-width:720px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quest-book-list {
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+    }
+
+    .quest-book-list li {
+      margin-bottom: 8px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .quest-book-list li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      color: var(--grass-dark);
+    }
+
+    /* ---------------- inventory / skills ---------------- */
+    .inventory {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+      gap: 10px;
+    }
+
+    .slot {
+      aspect-ratio: 1;
+      background: var(--stone-dark);
+      border: 3px solid #000;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.15), inset -2px -2px 0 rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      padding: 6px;
+    }
+
+    .slot:hover {
+      outline: 2px solid var(--gold);
+      outline-offset: -2px;
+    }
+
+    .slot .glyph {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--diamond), var(--diamond-dark));
+      border: 2px solid #000;
+    }
+
+    .slot .label {
+      font-size: 12.5px;
+      line-height: 1.1;
+    }
+
+    .item-panel {
+      margin-top: 16px;
+      display: none;
+    }
+
+    .item-panel.show {
+      display: block;
+    }
+
+    .item-card {
+      background: #111;
+      border: 3px solid var(--diamond);
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .item-card .glyph-lg {
+      width: 52px;
+      height: 52px;
+      flex: none;
+      background: linear-gradient(135deg, var(--diamond), var(--diamond-dark));
+      border: 2px solid #000;
+    }
+
+    .item-card h3 {
+      font-size: 13px;
+      color: var(--diamond);
+      margin: 0 0 6px;
+    }
+
+    .item-card .lvl {
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .item-card .desc {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    .mini-xp {
+      height: 8px;
+      background: #000;
+      border: 2px solid #000;
+      margin-top: 8px;
+    }
+
+    .mini-xp i {
+      display: block;
+      height: 100%;
+      background: var(--xp);
+    }
+
+    /* ---------------- crafting table ---------------- */
+    .craft-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 230px;
+    }
+
+    .craft-cell {
+      aspect-ratio: 1;
+      background: var(--stone-dark);
+      border: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .craft-arrow {
+      font-family: 'Press Start 2P';
+      font-size: 20px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .craft-result {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, var(--gold), #c9971f);
+      border: 3px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+      font-family: 'Press Start 2P';
+      color: #000;
+      padding: 6px;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .craft-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------------- achievements ---------------- */
+    .ach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 14px;
+    }
+
+    .ach {
+      display: flex;
+      gap: 12px;
+      background: #26261f;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+      min-height: 86px;
+    }
+
+    .ach:hover {
+      transform: scale(1.02);
+      border-color: var(--gold);
+    }
+
+    .ach::after {
+      content: "UNLOCKED";
+      position: absolute;
+      top: 6px;
+      right: -30px;
+      transform: rotate(35deg);
+      font-family: 'Press Start 2P';
+      font-size: 8px;
+      background: var(--grass-dark);
+      color: #fff;
+      padding: 3px 34px;
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .ach:hover::after {
+      opacity: 1;
+    }
+
+    .ach-img {
+      width: 48px;
+      height: 48px;
+      flex: none;
+      border: 2px solid #000;
+      object-fit: cover;
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.25);
+      background: var(--stone-dark);
+    }
+
+    .ach-icon {
+      width: 36px;
+      height: 36px;
+      flex: none;
+      background: linear-gradient(135deg, var(--gold), #c9971f);
+      border: 2px solid #000;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .ach .tag {
+      font-family: 'Press Start 2P';
+      font-size: 8.5px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ach .title {
+      font-size: 17px;
+      color: #fff;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+
+    .ach .xp {
+      font-size: 13px;
+      color: var(--xp);
+      margin-top: 2px;
+    }
+
+    /* ---------------- certificate modal ---------------- */
+    .cert-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 110;
+      padding: 16px;
+    }
+
+    .cert-modal.show {
+      display: flex;
+    }
+
+    .cert-modal-content {
+      width: 100%;
+      max-width: 800px;
+      background: #1a2617;
+      border: 4px solid var(--gold);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.7);
+      font-family: 'VT323';
+      font-size: 20px;
+      color: var(--text-light);
+    }
+
+    .cert-modal-header {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Press Start 2P';
+      font-size: 11px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cert-modal-header button {
+      background: none;
+      border: none;
+      color: #000;
+      font-family: 'Press Start 2P';
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .cert-modal-body {
+      padding: 16px;
+      text-align: center;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .cert-modal-body img {
+      max-width: 100%;
+      max-height: 70vh;
+      height: auto;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      background: #000;
+    }
+
+    /* ---------------- quest log ---------------- */
+    .quest {
+      background: var(--bg-panel-2);
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      border-left: 6px solid var(--grass);
+    }
+
+    .quest-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quest .qtitle {
+      font-family: 'Press Start 2P';
+      font-size: 12.5px;
+      color: var(--gold);
+    }
+
+    .quest .stars {
+      color: var(--gold);
+      font-size: 15px;
+    }
+
+    .quest .qdesc {
+      font-size: 18px;
+      margin: 10px 0 12px;
+      color: var(--text-light);
+    }
+
+    .tagrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tagrow span {
+      background: var(--diamond-dark);
+      color: #eafffb;
+      font-size: 12.5px;
+      border: 2px solid #000;
+      padding: 3px 8px;
+    }
+
+    .quest-status {
+      font-size: 12px;
+      font-family: 'Press Start 2P';
+      color: var(--xp);
+      margin-bottom: 8px;
+    }
+
+    /* ---------------- timeline ---------------- */
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--stone-dark);
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 26px;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      background: var(--grass);
+      border: 3px solid #000;
+    }
+
+    .tl-item h3 {
+      font-size: 12px;
+      color: var(--gold);
+      margin: 0 0 4px;
+    }
+
+    .tl-item p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ---------------- why hire grid ---------------- */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .why-card {
+      background: var(--stone-dark);
+      border: 3px solid #000;
+      text-align: center;
+      padding: 14px 8px;
+      font-size: 14px;
+      box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.1), inset -2px -2px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    /* ---------------- recruiter dashboard ---------------- */
+    .dash {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media(max-width:640px) {
+      .dash {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dash .col h3 {
+      font-size: 12px;
+      color: var(--diamond);
+      margin: 0 0 10px;
+    }
+
+    .fact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text-light);
+    }
+
+    .fact .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--xp);
+      border: 2px solid #000;
+      flex: none;
+    }
+
+    .linklist a {
+      display: block;
+      color: var(--diamond);
+      text-decoration: none;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .linklist a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------- portal contact ---------------- */
+    .portal-wrap {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .portal {
+      width: 150px;
+      height: 190px;
+      margin: 0 auto 20px;
+      position: relative;
+      cursor: pointer;
+      background: radial-gradient(ellipse at center, #7a2ecf 0%, #2a0845 70%, #000 100%);
+      border: 6px solid #1a1a1a;
+      box-shadow: 0 0 24px 6px rgba(140, 60, 220, 0.55);
+      animation: portalPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes portalPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 18px 4px rgba(140, 60, 220, 0.45);
+      }
+
+      50% {
+        box-shadow: 0 0 30px 10px rgba(180, 100, 255, 0.7);
+      }
+    }
+
+    .contact-form {
+      max-width: 440px;
+      margin: 0 auto;
+      text-align: left;
+      display: none;
+    }
+
+    .contact-form.show {
+      display: block;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: #111;
+      border: 3px solid #000;
+      color: var(--text-light);
+      font-family: 'VT323';
+      font-size: 17px;
+      padding: 9px 10px;
+      margin-bottom: 10px;
+      box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .contact-form textarea {
+      min-height: 90px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    footer .heart {
+      color: #ff5c5c;
+    }
+
+    .footer-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-badges span {
+      background: var(--stone-dark);
+      border: 2px solid #000;
+      padding: 3px 8px;
+      font-size: 12px;
+    }
+
+    /* ---------------- terminal ---------------- */
+    .term-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .term-overlay.show {
+      display: flex;
+    }
+
+    .term {
+      width: 100%;
+      max-width: 640px;
+      background: #0b0b0b;
+      border: 4px solid var(--grass-dark);
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.7);
+      font-family: 'VT323';
+      font-size: 19px;
+      color: #c9f7c9;
+    }
+
+    .term-head {
+      background: var(--grass-dark);
+      color: #fff;
+      font-family: 'Press Start 2P';
+      font-size: 11px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .term-head button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Press Start 2P';
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .term-body {
+      height: 340px;
+      overflow-y: auto;
+      padding: 12px 14px;
+    }
+
+    .term-body div {
+      white-space: pre-wrap;
+      margin-bottom: 2px;
+    }
+
+    .term-body .cmdline {
+      color: var(--gold);
+    }
+
+    .term-input-row {
+      display: flex;
+      align-items: center;
+      border-top: 2px solid #1c1c1c;
+      padding: 8px 12px;
+    }
+
+    .term-input-row span {
+      color: var(--gold);
+      margin-right: 6px;
+    }
+
+    .term-input-row input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #c9f7c9;
+      font-family: 'VT323';
+      font-size: 19px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="topbar">
-  <div class="brand">PJM.exe</div>
-  <div style="display:flex; align-items:center; gap:16px;">
-    <button id="themeToggleBtn" class="btn" style="padding:4px 8px; font-size:10px; margin:0; line-height:1; min-width:80px; text-align:center;">☀ LIGHT</button>
-    <div class="hint">Press <kbd>~</kbd> or <span id="termOpenLink" style="text-decoration:underline;cursor:pointer;">click here</span> to open terminal</div>
+  <div class="topbar">
+    <div class="brand">PJM.exe</div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <button id="themeToggleBtn" class="btn"
+        style="padding:4px 8px; font-size:10px; margin:0; line-height:1; min-width:80px; text-align:center;">☀
+        LIGHT</button>
+      <div class="hint">Press <kbd>~</kbd> or <span id="termOpenLink"
+          style="text-decoration:underline;cursor:pointer;">click here</span> to open terminal</div>
+    </div>
   </div>
-</div>
 
-<div class="wrap">
+  <div class="wrap">
 
-  <!-- HERO / PLAYER PROFILE -->
-  <section class="hero reveal">
-    <div class="hero-grid">
-      <div class="avatar">
-        <img src="profile.jpg" alt="Princess Jelyn Mae Villaraiz">
-      </div>
-      <div style="flex:1; min-width:240px;">
-        <div class="level-badge">Level 21 · Software Developer</div>
-        <h1 class="pname">Princess Jelyn Mae Villaraiz</h1>
-        <p class="proles">Cloud Enthusiast <span class="sep">/</span> Full Stack Developer <span class="sep">/</span> UI/UX Designer</p>
-        <div class="quest-inline">Current Quest: <b>Seeking Internship</b> · Building Real-World Applications · Learning AWS Cloud</div>
-
-        <div class="xp-wrap">
-          <div class="xp-label"><span>XP — Level 21</span><span id="xpPercentLabel">0%</span></div>
-          <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+    <!-- HERO / PLAYER PROFILE -->
+    <section class="hero reveal">
+      <div class="hero-grid">
+        <div class="avatar">
+          <img src="profile.jpg" alt="Princess Jelyn Mae Villaraiz">
         </div>
+        <div style="flex:1; min-width:240px;">
+          <div class="level-badge">Level 21 · Software Developer</div>
+          <h1 class="pname">Princess Jelyn Mae Villaraiz</h1>
+          <p class="proles">Cloud Enthusiast <span class="sep">/</span> Full Stack Developer <span class="sep">/</span>
+            UI/UX Designer</p>
+          <div class="quest-inline">Current Quest: <b>Seeking Internship</b> · Building Real-World Applications ·
+            Learning AWS Cloud</div>
 
-        <div class="hero-actions">
-          <a class="btn" href="RESUME.pdf" target="_blank" download="Princess_Jelyn_Mae_Villaraiz_Resume.pdf">Resume</a>
-          <a class="btn alt" href="https://github.com/pjmVillaraiz" target="_blank">GitHub</a>
-          <a class="btn alt" href="https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/" target="_blank">LinkedIn</a>
-          <a class="btn ghost" href="#portal">Contact</a>
-          <a class="btn" href="mailto:princessjelyn21@gmail.com?subject=Job%20Opportunity&body=Hi%20Princess%2C%20I%27d%20like%20to%20discuss%20a%20job%20opportunity%20with%20you." style="background:var(--redstone); color:#fff;">Hire Me</a>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="xp-wrap">
+            <div class="xp-label"><span>XP — Level 21</span><span id="xpPercentLabel">0%</span></div>
+            <div class="xp-bar">
+              <div class="xp-fill" id="xpFill"></div>
+            </div>
+          </div>
 
-  <!-- PLAYER STATS -->
-  <section class="section reveal">
-    <div class="chip">[ Player Stats ]</div>
-    <div class="stats-grid">
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
-            <path d="M1,2 h14 v12 h-14 z" fill="#7a4a2a"/>
-            <path d="M0,1 h16 v14 h-16 z" fill="none" stroke="#000" stroke-width="1"/>
-            <path d="M0,5 h16" stroke="#000" stroke-width="1"/>
-            <rect x="7" y="4" width="2" height="3" fill="#bfbfbf" stroke="#000" stroke-width="1"/>
-            <path d="M2,3 h12 M2,6 h12" stroke="rgba(255,255,255,0.15)"/>
-          </svg>
-        </div>
-        <div class="num" data-count="12">0</div>
-        <div class="lab">Quests Completed</div>
-      </div>
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
-            <path d="M7,1h2v2h2v2h2v2h-2v2h-2v2h-2v-2h-2v-2h-2v-2h2v-2h2v-2z" fill="#ffcc33" stroke="#000" stroke-width="1"/>
-            <path d="M6,5h4v4h-4z" fill="#ffeb99"/>
-          </svg>
-        </div>
-        <div class="num" data-count="18">0</div>
-        <div class="lab">Achievements Unlocked</div>
-      </div>
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
-            <path d="M9,2 h5 v2 h-1 v1 h-1 v-1 h-3 z M11,1 h2 v1 h-2 z M6,5 h3 v1 h-3 z" fill="#c0c0c0"/>
-            <path d="M2,13 l8,-8" stroke="#7a4a2a" stroke-width="1.5"/>
-            <path d="M1,14 l2,-2" stroke="#5c3a21" stroke-width="1.5"/>
-            <path d="M14,2 h1 v1 h-1 z M5,6 h1 v1 h-1 z" fill="#ffffff"/>
-            <path d="M9,2 h5 v2 h-1 v1 h-1 v-1 h-1 L6,6 L5,7 L4,6 L5,5 L9,2" fill="none" stroke="#000" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="num" data-count="10">0</div>
-        <div class="lab">Tools Mastered</div>
-      </div>
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
-            <path d="M4,9 h8 v3 h-8 z M2,7 h12 v2 h-12 z M3,5 h10 v2 h-10 z M6,3 h4 v2 h-4 z" fill="#55e0d0" stroke="#000" stroke-width="1"/>
-            <path d="M5,6 h6 v2 h-6 z" fill="#eafffb"/>
-          </svg>
-        </div>
-        <div class="num" data-static="AWS">0</div>
-        <div class="lab">Certified</div>
-      </div>
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 9 9" width="36" height="36" style="shape-rendering: crispEdges; image-rendering: pixelated;">
-            <path d="M1,0 h2 M5,0 h2 M0,1 h1 M3,1 h2 M7,1 h1 M0,2 v3 M8,2 v3 M1,5 h1 M7,5 h1 M2,6 h1 M6,6 h1 M3,7 h2 M4,8 h1" stroke="#000" fill="none"/>
-            <path d="M1,1 h2 v4 h-2 z M5,1 h2 v4 h-2 z M2,2 h4 v3 h-4 z M3,5 h2 v2 h-2 z" fill="#e04040"/>
-            <rect x="2" y="1" width="1" height="1" fill="#ffffff"/>
-            <rect x="1" y="2" width="1" height="1" fill="#ffffff"/>
-          </svg>
-        </div>
-        <div class="num" data-static="Open">0</div>
-        <div class="lab">Open to Work</div>
-      </div>
-      <div class="stat">
-        <div class="icon">
-          <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
-            <path d="M6,2 h4 v12 h-4 z M2,6 h12 v4 h-12 z M3,4 h10 v8 h-10 z" fill="#ffcc33" stroke="#000" stroke-width="1"/>
-            <rect x="5" y="5" width="6" height="6" fill="#eae3d2" stroke="#000" stroke-width="1"/>
-            <path d="M8,8 h2 M8,8 v-2" stroke="#000" stroke-width="1"/>
-            <rect x="7" y="1" width="2" height="1" fill="#c9971f" stroke="#000" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="num" data-count="500">0</div>
-        <div class="lab">Hours Coding</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BACKSTORY + CURRENT QUEST -->
-  <section class="section reveal">
-    <div class="chip">[ Backstory ]</div>
-    <div class="two-col">
-      <div class="book">
-        Every developer starts somewhere. Mine began with curiosity.<br><br>
-        I'm <b>Princess Jelyn Mae Villaraiz</b>, an aspiring software developer from Davao City who enjoys
-        transforming ideas into real-world software. I've developed payroll systems, inventory systems,
-        AI-powered reminder applications, cloud projects, and responsive web applications.<br><br>
-        My passion is solving problems through software. I continuously improve my skills through
-        certifications, self-learning, and practical projects. My mission is to build technology
-        that creates meaningful impact.
-      </div>
-      <div class="book">
-        <h3 style="font-size:13px;color:var(--dirt-dark);margin:0 0 10px;">Current Quest</h3>
-        <b>Looking For</b>
-        <ul class="quest-book-list">
-          <li>Internship</li>
-          <li>Junior Developer</li>
-          <li>Frontend Development</li>
-          <li>Cloud Engineering</li>
-          <li>AI Projects</li>
-        </ul>
-        <b>Mission Reward</b>
-        <ul class="quest-book-list">
-          <li>Grow professionally</li>
-          <li>Contribute to meaningful software</li>
-          <li>Learn from experienced developers</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS INVENTORY -->
-  <section class="section reveal">
-    <div class="chip">[ Inventory — Skills ]</div>
-    <div class="inventory" id="inventory">
-      <!-- filled by JS -->
-    </div>
-    <div class="item-panel" id="itemPanel"></div>
-  </section>
-
-  <!-- CRAFTING TABLE -->
-  <section class="section reveal">
-    <div class="chip">[ Crafting Table — Tech Stack ]</div>
-    <div class="panel">
-      <p style="margin-top:0;color:var(--text-muted);font-size:16px;">Click an ingredient to see it combine into a shipped project.</p>
-      <div class="craft-row">
-        <div class="craft-grid" id="craftGrid"></div>
-        <div class="craft-arrow">→</div>
-        <div class="craft-result" id="craftResult">Pick 3 ingredients</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS -->
-  <section class="section reveal">
-    <div class="chip">[ Achievements Unlocked ]</div>
-    <div class="ach-grid" id="achGrid"></div>
-  </section>
-
-  <!-- QUEST LOG / PROJECTS -->
-  <section class="section reveal">
-    <div class="chip">[ Quest Log — Projects ]</div>
-    <div id="questLog"></div>
-  </section>
-
-  <!-- PLAYER PROGRESSION -->
-  <section class="section reveal">
-    <div class="chip">[ Player Progression ]</div>
-    <div class="panel">
-      <div class="timeline" id="timeline"></div>
-    </div>
-  </section>
-
-  <!-- WHY HIRE -->
-  <section class="section reveal">
-    <div class="chip">[ Why Recruiters Choose This Player ]</div>
-    <div class="why-grid" id="whyGrid"></div>
-  </section>
-
-  <!-- RECRUITER DASHBOARD -->
-  <section class="section reveal">
-    <div class="chip">[ Recruiter Dashboard ]</div>
-    <div class="panel dash">
-      <div class="col">
-        <h3>Quick Facts</h3>
-        <div class="fact"><span class="dot"></span>Available Immediately</div>
-        <div class="fact"><span class="dot"></span>Remote Friendly</div>
-        <div class="fact"><span class="dot"></span>Open to Internship</div>
-      </div>
-      <div class="col">
-        <h3>Links</h3>
-        <div class="linklist">
-          <a href="RESUME.pdf" target="_blank"><svg viewBox="0 0 16 16" width="16" height="16" style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;"><path d="M3,2 h8 l3,3 v9 h-11 z" fill="#eae3d2" stroke="#000" stroke-width="1"/><path d="M5,5 h4 M5,8 h6" stroke="#8b8b8b" stroke-width="1"/></svg>Resume</a>
-          <a href="https://github.com/pjmVillaraiz" target="_blank"><svg viewBox="0 0 16 16" width="16" height="16" style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;"><path d="M5,2 h6 v10 h-6 z M3,5 h10 v5 h-10 z" fill="#2a2013" stroke="#000" stroke-width="1"/><path d="M3,2 h2 M11,2 h2" stroke="#000" stroke-width="1"/><rect x="5" y="6" width="2" height="2" fill="#eae3d2"/><rect x="9" y="6" width="2" height="2" fill="#eae3d2"/></svg>GitHub</a>
-          <a href="https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/" target="_blank"><svg viewBox="0 0 16 16" width="16" height="16" style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;"><path d="M6,2 h4 v2 h-4 z" fill="none" stroke="#000" stroke-width="1"/><rect x="2" y="4" width="12" height="9" fill="#7a4a2a" stroke="#000" stroke-width="1"/><rect x="7" y="7" width="2" height="2" fill="#ffcc33" stroke="#000" stroke-width="1"/></svg>LinkedIn</a>
-          <a href="#portal"><svg viewBox="0 0 16 16" width="16" height="16" style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;"><rect x="2" y="3" width="12" height="10" fill="#eae3d2" stroke="#000" stroke-width="1"/><path d="M3,4 l5,4 l5,-4" fill="none" stroke="#8b8b8b" stroke-width="1"/></svg>Email</a>
+          <div class="hero-actions">
+            <a class="btn" href="RESUME.pdf" target="_blank"
+              download="Princess_Jelyn_Mae_Villaraiz_Resume.pdf">Resume</a>
+            <a class="btn alt" href="https://github.com/pjmVillaraiz" target="_blank">GitHub</a>
+            <a class="btn alt" href="https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/"
+              target="_blank">LinkedIn</a>
+            <a class="btn ghost" href="#portal">Contact</a>
+            <a class="btn"
+              href="mailto:princessjelyn21@gmail.com?subject=Job%20Opportunity&body=Hi%20Princess%2C%20I%27d%20like%20to%20discuss%20a%20job%20opportunity%20with%20you."
+              style="background:var(--redstone); color:#fff;">Hire Me</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT PORTAL -->
-  <section class="section reveal" id="portal">
-    <div class="chip">[ The Final Portal ]</div>
-    <div class="panel portal-wrap">
-      <p style="color:var(--text-muted);font-size:16px;margin-top:0;">Click the portal to open a channel.</p>
-      <div class="portal" id="portalBtn"></div>
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgojpppy" method="POST">
+    <!-- PLAYER STATS -->
+    <section class="section reveal">
+      <div class="chip">[ Player Stats ]</div>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+              <path d="M1,2 h14 v12 h-14 z" fill="#7a4a2a" />
+              <path d="M0,1 h16 v14 h-16 z" fill="none" stroke="#000" stroke-width="1" />
+              <path d="M0,5 h16" stroke="#000" stroke-width="1" />
+              <rect x="7" y="4" width="2" height="3" fill="#bfbfbf" stroke="#000" stroke-width="1" />
+              <path d="M2,3 h12 M2,6 h12" stroke="rgba(255,255,255,0.15)" />
+            </svg>
+          </div>
+          <div class="num" data-count="12">0</div>
+          <div class="lab">Quests Completed</div>
+        </div>
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+              <path d="M7,1h2v2h2v2h2v2h-2v2h-2v2h-2v-2h-2v-2h-2v-2h2v-2h2v-2z" fill="#ffcc33" stroke="#000"
+                stroke-width="1" />
+              <path d="M6,5h4v4h-4z" fill="#ffeb99" />
+            </svg>
+          </div>
+          <div class="num" data-count="18">0</div>
+          <div class="lab">Achievements Unlocked</div>
+        </div>
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+              <path d="M9,2 h5 v2 h-1 v1 h-1 v-1 h-3 z M11,1 h2 v1 h-2 z M6,5 h3 v1 h-3 z" fill="#c0c0c0" />
+              <path d="M2,13 l8,-8" stroke="#7a4a2a" stroke-width="1.5" />
+              <path d="M1,14 l2,-2" stroke="#5c3a21" stroke-width="1.5" />
+              <path d="M14,2 h1 v1 h-1 z M5,6 h1 v1 h-1 z" fill="#ffffff" />
+              <path d="M9,2 h5 v2 h-1 v1 h-1 v-1 h-1 L6,6 L5,7 L4,6 L5,5 L9,2" fill="none" stroke="#000"
+                stroke-width="1" />
+            </svg>
+          </div>
+          <div class="num" data-count="10">0</div>
+          <div class="lab">Tools Mastered</div>
+        </div>
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+              <path d="M4,9 h8 v3 h-8 z M2,7 h12 v2 h-12 z M3,5 h10 v2 h-10 z M6,3 h4 v2 h-4 z" fill="#55e0d0"
+                stroke="#000" stroke-width="1" />
+              <path d="M5,6 h6 v2 h-6 z" fill="#eafffb" />
+            </svg>
+          </div>
+          <div class="num" data-static="AWS">0</div>
+          <div class="lab">Certified</div>
+        </div>
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 9 9" width="36" height="36"
+              style="shape-rendering: crispEdges; image-rendering: pixelated;">
+              <path
+                d="M1,0 h2 M5,0 h2 M0,1 h1 M3,1 h2 M7,1 h1 M0,2 v3 M8,2 v3 M1,5 h1 M7,5 h1 M2,6 h1 M6,6 h1 M3,7 h2 M4,8 h1"
+                stroke="#000" fill="none" />
+              <path d="M1,1 h2 v4 h-2 z M5,1 h2 v4 h-2 z M2,2 h4 v3 h-4 z M3,5 h2 v2 h-2 z" fill="#e04040" />
+              <rect x="2" y="1" width="1" height="1" fill="#ffffff" />
+              <rect x="1" y="2" width="1" height="1" fill="#ffffff" />
+            </svg>
+          </div>
+          <div class="num" data-static="Open">0</div>
+          <div class="lab">Open to Work</div>
+        </div>
+        <div class="stat">
+          <div class="icon">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+              <path d="M6,2 h4 v12 h-4 z M2,6 h12 v4 h-12 z M3,4 h10 v8 h-10 z" fill="#ffcc33" stroke="#000"
+                stroke-width="1" />
+              <rect x="5" y="5" width="6" height="6" fill="#eae3d2" stroke="#000" stroke-width="1" />
+              <path d="M8,8 h2 M8,8 v-2" stroke="#000" stroke-width="1" />
+              <rect x="7" y="1" width="2" height="1" fill="#c9971f" stroke="#000" stroke-width="1" />
+            </svg>
+          </div>
+          <div class="num" data-count="500">0</div>
+          <div class="lab">Hours Coding</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKSTORY + CURRENT QUEST -->
+    <section class="section reveal">
+      <div class="chip">[ Backstory ]</div>
+      <div class="two-col">
+        <div class="book">
+          Every developer starts somewhere. Mine began with curiosity.<br><br>
+          I'm <b>Princess Jelyn Mae Villaraiz</b>, an aspiring software developer from Davao City who enjoys
+          transforming ideas into real-world software. I've developed payroll systems, inventory systems,
+          AI-powered reminder applications, cloud projects, and responsive web applications.<br><br>
+          My passion is solving problems through software. I continuously improve my skills through
+          certifications, self-learning, and practical projects. My mission is to build technology
+          that creates meaningful impact.
+        </div>
+        <div class="book">
+          <h3 style="font-size:13px;color:var(--dirt-dark);margin:0 0 10px;">Current Quest</h3>
+          <b>Looking For</b>
+          <ul class="quest-book-list">
+            <li>Internship</li>
+            <li>Junior Developer</li>
+            <li>Frontend Development</li>
+            <li>Cloud Engineering</li>
+            <li>AI Projects</li>
+          </ul>
+          <b>Mission Reward</b>
+          <ul class="quest-book-list">
+            <li>Grow professionally</li>
+            <li>Contribute to meaningful software</li>
+            <li>Learn from experienced developers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS INVENTORY -->
+    <section class="section reveal">
+      <div class="chip">[ Inventory — Skills ]</div>
+      <div class="inventory" id="inventory">
+        <!-- filled by JS -->
+      </div>
+      <div class="item-panel" id="itemPanel"></div>
+    </section>
+
+    <!-- CRAFTING TABLE -->
+    <section class="section reveal">
+      <div class="chip">[ Crafting Table — Tech Stack ]</div>
+      <div class="panel">
+        <p style="margin-top:0;color:var(--text-muted);font-size:16px;">Click an ingredient to see it combine into a
+          shipped project.</p>
+        <div class="craft-row">
+          <div class="craft-grid" id="craftGrid"></div>
+          <div class="craft-arrow">→</div>
+          <div class="craft-result" id="craftResult">Pick 3 ingredients</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section reveal">
+      <div class="chip">[ Achievements Unlocked ]</div>
+      <div class="ach-grid" id="achGrid"></div>
+    </section>
+
+    <!-- QUEST LOG / PROJECTS -->
+    <section class="section reveal">
+      <div class="chip">[ Quest Log — Projects ]</div>
+      <div id="questLog"></div>
+    </section>
+
+    <!-- PLAYER PROGRESSION -->
+    <section class="section reveal">
+      <div class="chip">[ Player Progression ]</div>
+      <div class="panel">
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- WHY HIRE -->
+    <section class="section reveal">
+      <div class="chip">[ Why Recruiters Choose This Player ]</div>
+      <div class="why-grid" id="whyGrid"></div>
+    </section>
+
+    <!-- RECRUITER DASHBOARD -->
+    <section class="section reveal">
+      <div class="chip">[ Recruiter Dashboard ]</div>
+      <div class="panel dash">
+        <div class="col">
+          <h3>Quick Facts</h3>
+          <div class="fact"><span class="dot"></span>Available Immediately</div>
+          <div class="fact"><span class="dot"></span>Remote Friendly</div>
+          <div class="fact"><span class="dot"></span>Open to Internship</div>
+        </div>
+        <div class="col">
+          <h3>Links</h3>
+          <div class="linklist">
+            <a href="RESUME.pdf" target="_blank"><svg viewBox="0 0 16 16" width="16" height="16"
+                style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;">
+                <path d="M3,2 h8 l3,3 v9 h-11 z" fill="#eae3d2" stroke="#000" stroke-width="1" />
+                <path d="M5,5 h4 M5,8 h6" stroke="#8b8b8b" stroke-width="1" />
+              </svg>Resume</a>
+            <a href="https://github.com/pjmVillaraiz" target="_blank"><svg viewBox="0 0 16 16" width="16" height="16"
+                style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;">
+                <path d="M5,2 h6 v10 h-6 z M3,5 h10 v5 h-10 z" fill="#2a2013" stroke="#000" stroke-width="1" />
+                <path d="M3,2 h2 M11,2 h2" stroke="#000" stroke-width="1" />
+                <rect x="5" y="6" width="2" height="2" fill="#eae3d2" />
+                <rect x="9" y="6" width="2" height="2" fill="#eae3d2" />
+              </svg>GitHub</a>
+            <a href="https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/" target="_blank"><svg
+                viewBox="0 0 16 16" width="16" height="16"
+                style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;">
+                <path d="M6,2 h4 v2 h-4 z" fill="none" stroke="#000" stroke-width="1" />
+                <rect x="2" y="4" width="12" height="9" fill="#7a4a2a" stroke="#000" stroke-width="1" />
+                <rect x="7" y="7" width="2" height="2" fill="#ffcc33" stroke="#000" stroke-width="1" />
+              </svg>LinkedIn</a>
+            <a href="#portal"><svg viewBox="0 0 16 16" width="16" height="16"
+                style="shape-rendering: crispEdges; vertical-align: middle; margin-right: 6px;">
+                <rect x="2" y="3" width="12" height="10" fill="#eae3d2" stroke="#000" stroke-width="1" />
+                <path d="M3,4 l5,4 l5,-4" fill="none" stroke="#8b8b8b" stroke-width="1" />
+              </svg>Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT PORTAL -->
+    <section class="section reveal" id="portal">
+      <div class="chip">[ The Final Portal ]</div>
+      <div class="panel portal-wrap">
+        <p style="color:var(--text-muted);font-size:16px;margin-top:0;">Click the portal to open a channel.</p>
+        <div class="portal" id="portalBtn"></div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgojpppy" method="POST">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Your email" required>
           <textarea name="message" placeholder="Message" required></textarea>
           <button type="submit" class="btn" style="width:100%;">Message Me</button>
-      </form>
-      <div id="contactSent" style="display:none;color:var(--xp);font-size:16px;margin-top:10px;">Transmission received. I'll respond soon!</div>
-      <div id="contactError" style="display:none;color:var(--redstone);font-size:16px;margin-top:10px;">Transmission failed. Please try again!</div>
-    </div>
-  </section>
+        </form>
+        <div id="contactSent" style="display:none;color:var(--xp);font-size:16px;margin-top:10px;">Transmission
+          received. I'll respond soon!</div>
+        <div id="contactError" style="display:none;color:var(--redstone);font-size:16px;margin-top:10px;">Transmission
+          failed. Please try again!</div>
+      </div>
+    </section>
 
-  <footer class="reveal">
-    MISSION COMPLETE?<br>
-    Thanks for exploring my Minecraft world. Let's build something amazing together.<br><br>
-    Status: <span style="color:var(--xp);">Available for Internship</span>
-    <div class="footer-badges">
-      <span>HTML</span><span>CSS</span><span>JavaScript</span>
-    </div>
-    <div style="margin-top:10px;">© 2026 Princess Jelyn Mae Villaraiz — built with <span class="heart">♥</span></div>
-  </footer>
+    <footer class="reveal">
+      MISSION COMPLETE?<br>
+      Thanks for exploring my Minecraft world. Let's build something amazing together.<br><br>
+      Status: <span style="color:var(--xp);">Available for Internship</span>
+      <div class="footer-badges">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      </div>
+      <div style="margin-top:10px;">© 2026 Princess Jelyn Mae Villaraiz — built with <span class="heart">♥</span></div>
+    </footer>
 
-</div>
+  </div>
 
-<!-- CERTIFICATE LIGHTBOX MODAL -->
-<div class="cert-modal" id="certModal">
-  <div class="cert-modal-content">
-    <div class="cert-modal-header">
-      <span id="certModalTitle">Certificate View</span>
-      <button id="certModalClose">X CLOSE</button>
-    </div>
-    <div class="cert-modal-body">
-      <img id="certModalImg" src="" alt="Certificate View">
+  <!-- CERTIFICATE LIGHTBOX MODAL -->
+  <div class="cert-modal" id="certModal">
+    <div class="cert-modal-content">
+      <div class="cert-modal-header">
+        <span id="certModalTitle">Certificate View</span>
+        <button id="certModalClose">X CLOSE</button>
+      </div>
+      <div class="cert-modal-body">
+        <img id="certModalImg" src="" alt="Certificate View">
+      </div>
     </div>
   </div>
-</div>
 
-<!-- TERMINAL -->
-<div class="term-overlay" id="termOverlay">
-  <div class="term">
-    <div class="term-head"><span>TERMINAL — type "help"</span><button id="termClose">X CLOSE</button></div>
-    <div class="term-body" id="termBody"></div>
-    <div class="term-input-row"><span>&gt;</span><input id="termInput" type="text" autocomplete="off" spellcheck="false"></div>
+  <!-- TERMINAL -->
+  <div class="term-overlay" id="termOverlay">
+    <div class="term">
+      <div class="term-head"><span>TERMINAL — type "help"</span><button id="termClose">X CLOSE</button></div>
+      <div class="term-body" id="termBody"></div>
+      <div class="term-input-row"><span>&gt;</span><input id="termInput" type="text" autocomplete="off"
+          spellcheck="false"></div>
+    </div>
   </div>
-</div>
 
-<script>
-/* ---------------- data ---------------- */
-const skills = [
-  {name:"JavaScript", level:85, desc:"Modern ES6, DOM, API Integration, Responsive UI."},
-  {name:"Flutter", level:75, desc:"Cross-platform mobile app development."},
-  {name:"Supabase", level:75, desc:"PostgreSQL database, authentication, real-time sync, and storage hosting."},
-  {name:"AWS", level:60, desc:"EC2, S3, IAM fundamentals via AWS Academy."},
-  {name:"Java", level:80, desc:"OOP, data structures & algorithms."},
-  {name:"PHP", level:55, desc:"Server-side scripting & form handling."},
-  {name:"MySQL", level:70, desc:"Relational schema design & queries."},
-  {name:"Figma", level:78, desc:"Wireframes, prototypes, high-fidelity UI."},
-  {name:"Git", level:72, desc:"Version control & collaborative workflows."},
-  {name:"HTML", level:90, desc:"Semantic, accessible markup."},
-  {name:"CSS", level:88, desc:"Responsive layout & design systems."},
-];
+  <script>
+    /* ---------------- data ---------------- */
+    const skills = [
+      { name: "JavaScript", level: 85, desc: "Modern ES6, DOM, API Integration, Responsive UI." },
+      { name: "Flutter", level: 75, desc: "Cross-platform mobile app development." },
+      { name: "Supabase", level: 75, desc: "PostgreSQL database, authentication, real-time sync, and storage hosting." },
+      { name: "AWS", level: 60, desc: "EC2, S3, IAM fundamentals via AWS Academy." },
+      { name: "Java", level: 80, desc: "OOP, data structures & algorithms." },
+      { name: "PHP", level: 55, desc: "Server-side scripting & form handling." },
+      { name: "MySQL", level: 70, desc: "Relational schema design & queries." },
+      { name: "Figma", level: 78, desc: "Wireframes, prototypes, high-fidelity UI." },
+      { name: "Git", level: 72, desc: "Version control & collaborative workflows." },
+      { name: "HTML", level: 90, desc: "Semantic, accessible markup." },
+      { name: "CSS", level: 88, desc: "Responsive layout & design systems." },
+    ];
 
-const achievements = [
-  {tag:"AWS Training", xp:"+150 XP", title:"AWS Cloud Practitioner Practice Set", items:"CLF-C02 preparation & practice sets", img:"achievement12.jpg"},
-  {tag:"Innovision 2026", xp:"+200 XP", title:"CCIS Innovision Colloquium Participation", items:"College research, innovation and project Colloquium", img:"achievement13.jpg"},
-  {tag:"AWS Club", xp:"+100 XP", title:"1st AWS Learners Club General Meeting", items:"Cloud learning community engagement", img:"achievement14.jpg"},
-  {tag:"AWS Cloud Academy", xp:"+500 XP", title:"Cloud Fundamentals", items:"EC2 · IAM · S3 · Cloud Computing", img:"aws-badge.png"},
-  {tag:"Microsoft", xp:"+200 XP", title:"Intro to Programming with C#", items:"Hands-on projects & best practices", img:"achievement1.jpg"},
-  {tag:"Certificate", xp:"+200 XP", title:"C++ Lab: Crafting Code in Digital Age", items:"Advanced C++, algorithms & modern programming", img:"achievement2.jpg"},
-  {tag:"IT Specialist", xp:"+250 XP", title:"Java IT Specialist", items:"Certified, object-oriented programming expertise", img:"achievement3.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"Build Dynamic User Interface", items:"Interactive and responsive user interfaces", img:"achievement4.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"High-Fidelity Prototyping in Figma", items:"Professional UI/UX designs & prototyping", img:"achievement5.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"Start UX Design Process", items:"Empathize, Define, and Ideate foundations", img:"achievement6.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"Conduct UX Research & Test", items:"User research methodologies & early concept tests", img:"achievement7.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"Build Wireframes & Lo-Fi Prototypes", items:"Storyboarding, low-fidelity wireframing & testing", img:"achievement8.jpg"},
-  {tag:"Google", xp:"+180 XP", title:"Java Programming 2", items:"Advanced data structures, algorithms & generics", img:"achievement9.jpg"},
-  {tag:"Google", xp:"+150 XP", title:"Computing Ethics & Society Foundations", items:"Social impacts & ethics in technology", img:"achievement10.jpg"},
-  {tag:"Duke", xp:"+150 XP", title:"Think Again: Understanding Arguments", items:"Logical arguments, reasoning & critical thinking", img:"achievement11.jpg"},
-];
+    const achievements = [
+      { tag: "AWS Training", xp: "+150 XP", title: "AWS Cloud Practitioner Practice Set", items: "CLF-C02 preparation & practice sets", img: "achievement12.jpg" },
+      { tag: "Innovision 2026", xp: "+200 XP", title: "CCIS Innovision Colloquium Participation", items: "College research, innovation and project Colloquium", img: "achievement13.jpg" },
+      { tag: "AWS Club", xp: "+100 XP", title: "1st AWS Learners Club General Meeting", items: "Cloud learning community engagement", img: "achievement14.jpg" },
+      { tag: "AWS Cloud Academy", xp: "+500 XP", title: "Cloud Fundamentals", items: "EC2 · IAM · S3 · Cloud Computing", img: "aws-badge.png" },
+      { tag: "Microsoft", xp: "+200 XP", title: "Intro to Programming with C#", items: "Hands-on projects & best practices", img: "achievement1.jpg" },
+      { tag: "Certificate", xp: "+200 XP", title: "C++ Lab: Crafting Code in Digital Age", items: "Advanced C++, algorithms & modern programming", img: "achievement2.jpg" },
+      { tag: "IT Specialist", xp: "+250 XP", title: "Java IT Specialist", items: "Certified, object-oriented programming expertise", img: "achievement3.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "Build Dynamic User Interface", items: "Interactive and responsive user interfaces", img: "achievement4.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "High-Fidelity Prototyping in Figma", items: "Professional UI/UX designs & prototyping", img: "achievement5.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "Start UX Design Process", items: "Empathize, Define, and Ideate foundations", img: "achievement6.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "Conduct UX Research & Test", items: "User research methodologies & early concept tests", img: "achievement7.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "Build Wireframes & Lo-Fi Prototypes", items: "Storyboarding, low-fidelity wireframing & testing", img: "achievement8.jpg" },
+      { tag: "Google", xp: "+180 XP", title: "Java Programming 2", items: "Advanced data structures, algorithms & generics", img: "achievement9.jpg" },
+      { tag: "Google", xp: "+150 XP", title: "Computing Ethics & Society Foundations", items: "Social impacts & ethics in technology", img: "achievement10.jpg" },
+      { tag: "Duke", xp: "+150 XP", title: "Think Again: Understanding Arguments", items: "Logical arguments, reasoning & critical thinking", img: "achievement11.jpg" },
+    ];
 
-const quests = [
-  {title:"LifeEase PH", stars:5, status:"QUEST COMPLETE", desc:"AI-powered reminder application for elderly users with multilingual voice interaction.", tags:["Flutter","Whisper API","Gemma AI","Supabase","Cloud"], github:"https://github.com/pjmVillaraiz/lifeease"},
-  {title:"Maharlika Republic", stars:4, status:"QUEST COMPLETE", desc:"A collaborative web application representing the Maharlika Republic. Features secure user accounts, dynamic data tracking, and structured admin portal management.", tags:["HTML","CSS","JavaScript","Collaboration"], github:"https://github.com/Miguel-Ponce01/Maharlika-Republic", demo:"https://maharlika-republic.vercel.app/"},
-  {title:"Smart Payroll Management System", stars:4, status:"QUEST COMPLETE", desc:"Automates employee salary computation, deductions, and reports for HR teams.", tags:["Java","MySQL","Reporting"], github:"https://github.com/pjmVillaraiz/SPR-Devs"},
-  {title:"Student Grade Management Portal", stars:4, status:"QUEST COMPLETE", desc:"Secure Next.js + Supabase app for real-time grade tracking and course management.", tags:["Next.js","Supabase","Auth"], demo:"https://grademanagementportal.vercel.app/login"},
-  {title:"Green Sense", stars:3, status:"QUEST COMPLETE", desc:"Platform helping small greenhouse farmers turn transactions into valuable insights.", tags:["Web App","Data"], demo:"https://pjmvillaraiz.github.io/GreenSense/", github:"https://github.com/pjmVillaraiz/GreenSense"},
-  {title:"Bambu Vibe Storage Management System", stars:4, status:"QUEST COMPLETE", desc:"Java-based inventory system with real-time updates and comprehensive reporting.", tags:["Java","OOP","UI"], github:"https://github.com/pjmVillaraiz/Bambu-Vibe"},
-];
+    const quests = [
+      { title: "LifeEase PH", stars: 5, status: "QUEST COMPLETE", desc: "AI-powered reminder application for elderly users with multilingual voice interaction.", tags: ["Flutter", "Whisper API", "Gemma AI", "Supabase", "Cloud"], github: "https://github.com/pjmVillaraiz/lifeease" },
+      { title: "Maharlika Republic", stars: 4, status: "QUEST COMPLETE", desc: "A collaborative web application representing the Maharlika Republic. Features secure user accounts, dynamic data tracking, and structured admin portal management.", tags: ["HTML", "CSS", "JavaScript", "Collaboration"], github: "https://github.com/Miguel-Ponce01/Maharlika-Republic", demo: "https://maharlika-republic.vercel.app/", manuscript: "CS103%20MANUSCRIPT.pdf", wireframes: "https://malayancollegesmindanaoo365-my.sharepoint.com/:f:/g/personal/pjmvillaraiz_mcm_edu_ph/IgAdox4T96uWSoB5-BL5_YriAfQmN4W1pQiplWeHMQRLLLA?e=nlSh5P" },
+      { title: "Smart Payroll Management System", stars: 4, status: "QUEST COMPLETE", desc: "Automates employee salary computation, deductions, and reports for HR teams.", tags: ["Java", "MySQL", "Reporting"], github: "https://github.com/pjmVillaraiz/SPR-Devs" },
+      { title: "Student Grade Management Portal", stars: 4, status: "QUEST COMPLETE", desc: "Secure Next.js + Supabase app for real-time grade tracking and course management.", tags: ["Next.js", "Supabase", "Auth"], demo: "https://grademanagementportal.vercel.app/login" },
+      { title: "Green Sense", stars: 3, status: "QUEST COMPLETE", desc: "Platform helping small greenhouse farmers turn transactions into valuable insights.", tags: ["Web App", "Data"], demo: "https://pjmvillaraiz.github.io/GreenSense/", github: "https://github.com/pjmVillaraiz/GreenSense" },
+      { title: "Bambu Vibe Storage Management System", stars: 4, status: "QUEST COMPLETE", desc: "Java-based inventory system with real-time updates and comprehensive reporting.", tags: ["Java", "OOP", "UI"], github: "https://github.com/pjmVillaraiz/Bambu-Vibe" },
+    ];
 
-const timelineData = [
-  {t:"Started BS Information Systems", d:"Began the journey at Mapúa Malayan Colleges of Mindanao."},
-  {t:"Built First Java Project", d:"Learned OOP fundamentals through hands-on coursework."},
-  {t:"Completed AWS Academy", d:"Earned cloud computing fundamentals certification."},
-  {t:"Developed AI Applications", d:"Shipped LifeEase PH, an AI-powered assistive app."},
-  {t:"Learning Cloud", d:"Deepening AWS & cloud-native development skills."},
-  {t:"Seeking Internship", d:"Ready to bring these skills to a real engineering team."},
-];
+    const timelineData = [
+      { t: "Started BS Information Systems", d: "Began the journey at Mapúa Malayan Colleges of Mindanao." },
+      { t: "Built First Java Project", d: "Learned OOP fundamentals through hands-on coursework." },
+      { t: "Completed AWS Academy", d: "Earned cloud computing fundamentals certification." },
+      { t: "Developed AI Applications", d: "Shipped LifeEase PH, an AI-powered assistive app." },
+      { t: "Learning Cloud", d: "Deepening AWS & cloud-native development skills." },
+      { t: "Seeking Internship", d: "Ready to bring these skills to a real engineering team." },
+    ];
 
-const whyHire = ["Fast Learner","Problem Solver","Cloud Enthusiast","UI/UX Design","Frontend Development","API Integration","Team Collaboration","Growth Mindset","Self-Learner","Always Improving"];
+    const whyHire = ["Fast Learner", "Problem Solver", "Cloud Enthusiast", "UI/UX Design", "Frontend Development", "API Integration", "Team Collaboration", "Growth Mindset", "Self-Learner", "Always Improving"];
 
-/* ---------------- render inventory ---------------- */
-function getSkillGlyph(skillName, size) {
-  const glyphs = {
-    "JavaScript": `
+    /* ---------------- render inventory ---------------- */
+    function getSkillGlyph(skillName, size) {
+      const glyphs = {
+        "JavaScript": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M4,2 h8 v12 h-8 z" fill="#ffcc33" stroke="#000" stroke-width="1"/>
         <path d="M6,5 h4 M6,8 h4 M6,11 h4" stroke="#2a2013" stroke-width="1"/>
       </svg>`,
-    "Flutter": `
+        "Flutter": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M8,2 l5,5 l-5,5 l-5,-5 z" fill="#55e0d0" stroke="#000" stroke-width="1"/>
         <path d="M8,4 l3,3 l-3,3" stroke="#eafffb" stroke-width="1" fill="none"/>
       </svg>`,
-    "Supabase": `
+        "Supabase": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M8,1 l4,3 v8 l-4,3 l-4,-3 v-8 z" fill="#8ce23a" stroke="#000" stroke-width="1"/>
         <path d="M8,3 l2,2 v6 l-2,2" fill="none" stroke="#eafffb" stroke-width="1"/>
       </svg>`,
-    "AWS": `
+        "AWS": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M5,3 h6 v10 h-6 z M3,5 h10 v6 h-10 z" fill="#e04040" stroke="#000" stroke-width="1"/>
         <path d="M6,6 h4 v4 h-4 z" fill="#ffcc33"/>
       </svg>`,
-    "Java": `
+        "Java": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M6,1 v2 M9,1 v2 M12,1 v2" stroke="#8b8b8b" stroke-width="1"/>
         <path d="M4,5 h8 v6 h-8 z" fill="#7a4a2a" stroke="#000" stroke-width="1"/>
         <path d="M12,6 h2 v3 h-2" fill="none" stroke="#000" stroke-width="1"/>
       </svg>`,
-    "PHP": `
+        "PHP": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M6,4 h4 v8 h-4 z M4,6 h8 v4 h-8 z" fill="#e04040" stroke="#000" stroke-width="1"/>
         <rect x="7" y="7" width="2" height="2" fill="#ffffff"/>
       </svg>`,
-    "MySQL": `
+        "MySQL": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <rect x="3" y="3" width="10" height="10" fill="#1f7c73" stroke="#000" stroke-width="1"/>
         <rect x="5" y="5" width="6" height="6" fill="#55e0d0"/>
       </svg>`,
-    "Figma": `
+        "Figma": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M3,3 h10 v10 h-10 z" fill="#eae3d2" stroke="#000" stroke-width="1"/>
         <rect x="5" y="5" width="2" height="2" fill="#e04040"/>
         <rect x="9" y="5" width="2" height="2" fill="#8ce23a"/>
         <rect x="5" y="9" width="2" height="2" fill="#55e0d0"/>
       </svg>`,
-    "Git": `
+        "Git": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <circle cx="5" cy="11" r="2" fill="#8b8b8b" stroke="#000" stroke-width="1"/>
         <circle cx="11" cy="5" r="2" fill="#8b8b8b" stroke="#000" stroke-width="1"/>
         <path d="M5,9 v-4 h6" stroke="#000" stroke-width="1" fill="none"/>
       </svg>`,
-    "HTML": `
+        "HTML": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <path d="M3,2 h8 l3,3 v9 h-11 z" fill="#eae3d2" stroke="#000" stroke-width="1"/>
         <path d="M5,5 h4 M5,8 h6 M5,11 h6" stroke="#8b8b8b" stroke-width="1"/>
       </svg>`,
-    "CSS": `
+        "CSS": `
       <svg viewBox="0 0 16 16" width="${size}" height="${size}" style="shape-rendering: crispEdges;">
         <rect x="2" y="2" width="12" height="12" fill="#15200f" stroke="#000" stroke-width="1"/>
         <rect x="4" y="4" width="8" height="8" fill="#6abe30"/>
         <rect x="6" y="6" width="4" height="4" fill="#8ce23a"/>
       </svg>`
-  };
-  return glyphs[skillName] || `<div style="width:${size}px; height:${size}px; background:var(--diamond);"></div>`;
-}
+      };
+      return glyphs[skillName] || `<div style="width:${size}px; height:${size}px; background:var(--diamond);"></div>`;
+    }
 
-const invEl = document.getElementById('inventory');
-const panelEl = document.getElementById('itemPanel');
-skills.forEach((s,i)=>{
-  const slot = document.createElement('div');
-  slot.className='slot';
-  slot.innerHTML = `<div class="glyph" style="background:none; border:none; box-shadow:none; display:flex; align-items:center; justify-content:center;">${getSkillGlyph(s.name, 32)}</div><div class="label">${s.name}</div>`;
-  slot.addEventListener('click',()=>{
-    panelEl.classList.add('show');
-    panelEl.innerHTML = `
+    const invEl = document.getElementById('inventory');
+    const panelEl = document.getElementById('itemPanel');
+    skills.forEach((s, i) => {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      slot.innerHTML = `<div class="glyph" style="background:none; border:none; box-shadow:none; display:flex; align-items:center; justify-content:center;">${getSkillGlyph(s.name, 32)}</div><div class="label">${s.name}</div>`;
+      slot.addEventListener('click', () => {
+        panelEl.classList.add('show');
+        panelEl.innerHTML = `
       <div class="item-card">
         <div class="glyph-lg" style="background:none; border:none; box-shadow:none; flex:none; width:52px; height:52px; display:flex; align-items:center; justify-content:center;">${getSkillGlyph(s.name, 52)}</div>
         <div style="flex:1;">
@@ -783,306 +1500,313 @@ skills.forEach((s,i)=>{
           <div class="mini-xp"><i style="width:${s.level}%"></i></div>
         </div>
       </div>`;
-    panelEl.scrollIntoView({behavior:'smooth', block:'nearest'});
-  });
-  invEl.appendChild(slot);
-});
+        panelEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+      invEl.appendChild(slot);
+    });
 
-/* ---------------- crafting table ---------------- */
-const ingredients = ["JavaScript","Supabase","Flutter","Git","Node.js","AWS","HTML","CSS","Java"];
-const craftGrid = document.getElementById('craftGrid');
-const craftResult = document.getElementById('craftResult');
-let picked = [];
-ingredients.forEach(name=>{
-  const cell = document.createElement('div');
-  cell.className='craft-cell';
-  cell.textContent = name;
-  cell.addEventListener('click',()=>{
-    if(picked.includes(name)){ picked = picked.filter(p=>p!==name); cell.style.outline='none'; }
-    else { if(picked.length>=3) return; picked.push(name); cell.style.outline='2px solid var(--gold)'; }
-    if(picked.length===3){
-      craftResult.textContent = "LifeEase PH crafted!";
-    } else {
-      craftResult.textContent = `Pick ${3-picked.length} more`;
-    }
-  });
-  craftGrid.appendChild(cell);
-});
+    /* ---------------- crafting table ---------------- */
+    const ingredients = ["JavaScript", "Supabase", "Flutter", "Git", "Node.js", "AWS", "HTML", "CSS", "Java"];
+    const craftGrid = document.getElementById('craftGrid');
+    const craftResult = document.getElementById('craftResult');
+    let picked = [];
+    ingredients.forEach(name => {
+      const cell = document.createElement('div');
+      cell.className = 'craft-cell';
+      cell.textContent = name;
+      cell.addEventListener('click', () => {
+        if (picked.includes(name)) { picked = picked.filter(p => p !== name); cell.style.outline = 'none'; }
+        else { if (picked.length >= 3) return; picked.push(name); cell.style.outline = '2px solid var(--gold)'; }
+        if (picked.length === 3) {
+          craftResult.textContent = "LifeEase PH crafted!";
+        } else {
+          craftResult.textContent = `Pick ${3 - picked.length} more`;
+        }
+      });
+      craftGrid.appendChild(cell);
+    });
 
-/* ---------------- achievements ---------------- */
-const achGrid = document.getElementById('achGrid');
-const certModal = document.getElementById('certModal');
-const certModalImg = document.getElementById('certModalImg');
-const certModalTitle = document.getElementById('certModalTitle');
-const certModalClose = document.getElementById('certModalClose');
+    /* ---------------- achievements ---------------- */
+    const achGrid = document.getElementById('achGrid');
+    const certModal = document.getElementById('certModal');
+    const certModalImg = document.getElementById('certModalImg');
+    const certModalTitle = document.getElementById('certModalTitle');
+    const certModalClose = document.getElementById('certModalClose');
 
-achievements.forEach(a=>{
-  const div = document.createElement('div');
-  div.className='ach';
-  
-  let mediaHtml = '';
-  if (a.img) {
-    mediaHtml = `<img class="ach-img" src="${a.img}" alt="${a.title}">`;
-  } else {
-    mediaHtml = `<div class="ach-icon">☁</div>`;
-  }
+    achievements.forEach(a => {
+      const div = document.createElement('div');
+      div.className = 'ach';
 
-  div.innerHTML = `${mediaHtml}<div>
+      let mediaHtml = '';
+      if (a.img) {
+        mediaHtml = `<img class="ach-img" src="${a.img}" alt="${a.title}">`;
+      } else {
+        mediaHtml = `<div class="ach-icon">☁</div>`;
+      }
+
+      div.innerHTML = `${mediaHtml}<div>
       <span class="tag">${a.tag}</span>
       <div class="title">${a.title}</div>
       <div class="xp">${a.xp} · ${a.items}</div>
     </div>`;
 
-  if (a.img) {
-    div.addEventListener('click', () => {
-      certModalImg.src = a.img;
-      certModalTitle.textContent = a.title;
-      certModal.classList.add('show');
+      if (a.img) {
+        div.addEventListener('click', () => {
+          certModalImg.src = a.img;
+          certModalTitle.textContent = a.title;
+          certModal.classList.add('show');
+        });
+      }
+      achGrid.appendChild(div);
     });
-  }
-  achGrid.appendChild(div);
-});
 
-certModalClose.addEventListener('click', () => {
-  certModal.classList.remove('show');
-});
-certModal.addEventListener('click', (e) => {
-  if (e.target === certModal) {
-    certModal.classList.remove('show');
-  }
-});
+    certModalClose.addEventListener('click', () => {
+      certModal.classList.remove('show');
+    });
+    certModal.addEventListener('click', (e) => {
+      if (e.target === certModal) {
+        certModal.classList.remove('show');
+      }
+    });
 
-/* ---------------- quest log ---------------- */
-const qLog = document.getElementById('questLog');
-quests.forEach(q=>{
-  const div = document.createElement('div');
-  div.className='quest';
-  
-  let buttonsHtml = '';
-  if (q.demo) {
-    buttonsHtml += `<a class="btn" href="${q.demo}" target="_blank">Live Demo</a> `;
-  }
-  if (q.github) {
-    buttonsHtml += `<a class="btn alt" href="${q.github}" target="_blank">GitHub</a> `;
-  }
-  if (q.caseStudy) {
-    buttonsHtml += `<a class="btn ghost" href="${q.caseStudy}" target="_blank">Case Study</a> `;
-  }
+    /* ---------------- quest log ---------------- */
+    const qLog = document.getElementById('questLog');
+    quests.forEach(q => {
+      const div = document.createElement('div');
+      div.className = 'quest';
 
-  div.innerHTML = `
+      let buttonsHtml = '';
+      if (q.demo) {
+        buttonsHtml += `<a class="btn" href="${q.demo}" target="_blank">Live Demo</a> `;
+      }
+      if (q.github) {
+        buttonsHtml += `<a class="btn alt" href="${q.github}" target="_blank">GitHub</a> `;
+      }
+      if (q.wireframes) {
+        buttonsHtml += `<a class="btn" href="${q.wireframes}" target="_blank">Wireframes</a> `;
+      }
+      if (q.manuscript) {
+        buttonsHtml += `<a class="btn ghost" href="${q.manuscript}" target="_blank">Manuscript</a> `;
+      }
+      if (q.caseStudy) {
+        buttonsHtml += `<a class="btn ghost" href="${q.caseStudy}" target="_blank">Case Study</a> `;
+      }
+
+      div.innerHTML = `
     <div class="quest-status">${q.status}</div>
     <div class="quest-top">
       <div class="qtitle">${q.title}</div>
-      <div class="stars">${"★".repeat(q.stars)}${"☆".repeat(5-q.stars)}</div>
+      <div class="stars">${"★".repeat(q.stars)}${"☆".repeat(5 - q.stars)}</div>
     </div>
     <div class="qdesc">${q.desc}</div>
-    <div class="tagrow">${q.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+    <div class="tagrow">${q.tags.map(t => `<span>${t}</span>`).join('')}</div>
     <div style="margin-top:12px;">${buttonsHtml}</div>
   `;
-  qLog.appendChild(div);
-});
+      qLog.appendChild(div);
+    });
 
-/* ---------------- timeline ---------------- */
-const tlEl = document.getElementById('timeline');
-timelineData.forEach(t=>{
-  const div = document.createElement('div');
-  div.className='tl-item';
-  div.innerHTML = `<h3>${t.t}</h3><p>${t.d}</p>`;
-  tlEl.appendChild(div);
-});
+    /* ---------------- timeline ---------------- */
+    const tlEl = document.getElementById('timeline');
+    timelineData.forEach(t => {
+      const div = document.createElement('div');
+      div.className = 'tl-item';
+      div.innerHTML = `<h3>${t.t}</h3><p>${t.d}</p>`;
+      tlEl.appendChild(div);
+    });
 
-/* ---------------- why hire ---------------- */
-const whyGrid = document.getElementById('whyGrid');
-whyHire.forEach(w=>{
-  const div = document.createElement('div');
-  div.className='why-card';
-  div.textContent = w;
-  whyGrid.appendChild(div);
-});
+    /* ---------------- why hire ---------------- */
+    const whyGrid = document.getElementById('whyGrid');
+    whyHire.forEach(w => {
+      const div = document.createElement('div');
+      div.className = 'why-card';
+      div.textContent = w;
+      whyGrid.appendChild(div);
+    });
 
-/* ---------------- counters + XP bar on reveal ---------------- */
-const counters = document.querySelectorAll('.num[data-count]');
-const statics = document.querySelectorAll('.num[data-static]');
-statics.forEach(el=>{ el.textContent = el.dataset.static; });
+    /* ---------------- counters + XP bar on reveal ---------------- */
+    const counters = document.querySelectorAll('.num[data-count]');
+    const statics = document.querySelectorAll('.num[data-static]');
+    statics.forEach(el => { el.textContent = el.dataset.static; });
 
-function animateCount(el){
-  const target = parseInt(el.dataset.count,10);
-  let cur = 0;
-  const step = Math.max(1, Math.round(target/40));
-  const iv = setInterval(()=>{
-    cur += step;
-    if(cur>=target){ cur=target; clearInterval(iv); }
-    el.textContent = cur + "+";
-  },30);
-}
-
-let xpDone=false;
-function runXp(){
-  if(xpDone) return; xpDone=true;
-  document.getElementById('xpFill').style.width='68%';
-  document.getElementById('xpPercentLabel').textContent='68%';
-}
-
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      if(e.target.querySelector('.stats-grid')){ counters.forEach(animateCount); }
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      let cur = 0;
+      const step = Math.max(1, Math.round(target / 40));
+      const iv = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(iv); }
+        el.textContent = cur + "+";
+      }, 30);
     }
-  });
-},{threshold:0.2});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-runXp();
 
-/* ---------------- portal contact ---------------- */
-document.getElementById('portalBtn').addEventListener('click',()=>{
-  document.getElementById('contactForm').classList.add('show');
-});
-document.getElementById('contactForm').addEventListener('submit',(e)=>{
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-  const statusSuccess = document.getElementById('contactSent');
-  const statusError = document.getElementById('contactError');
-  
-  statusSuccess.style.display = 'none';
-  statusError.style.display = 'none';
-
-  fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: {
-        'Accept': 'application/json'
+    let xpDone = false;
+    function runXp() {
+      if (xpDone) return; xpDone = true;
+      document.getElementById('xpFill').style.width = '68%';
+      document.getElementById('xpPercentLabel').textContent = '68%';
     }
-  }).then(response => {
-    if (response.ok) {
-      form.style.display = 'none';
-      statusSuccess.style.display = 'block';
-      form.reset();
-    } else {
-      response.json().then(data => {
-        if (data.errors) {
-          statusError.textContent = data.errors.map(error => error.message).join(", ");
-        } else {
-          statusError.textContent = "Transmission failed. Please try again!";
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          if (e.target.querySelector('.stats-grid')) { counters.forEach(animateCount); }
         }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    runXp();
+
+    /* ---------------- portal contact ---------------- */
+    document.getElementById('portalBtn').addEventListener('click', () => {
+      document.getElementById('contactForm').classList.add('show');
+    });
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const statusSuccess = document.getElementById('contactSent');
+      const statusError = document.getElementById('contactError');
+
+      statusSuccess.style.display = 'none';
+      statusError.style.display = 'none';
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          statusSuccess.style.display = 'block';
+          form.reset();
+        } else {
+          response.json().then(data => {
+            if (data.errors) {
+              statusError.textContent = data.errors.map(error => error.message).join(", ");
+            } else {
+              statusError.textContent = "Transmission failed. Please try again!";
+            }
+            statusError.style.display = 'block';
+          });
+        }
+      }).catch(error => {
+        statusError.textContent = "Transmission failed. Please check your connection and try again!";
         statusError.style.display = 'block';
       });
+    });
+
+    /* ---------------- terminal ---------------- */
+    const termOverlay = document.getElementById('termOverlay');
+    const termBody = document.getElementById('termBody');
+    const termInput = document.getElementById('termInput');
+
+    function openTerm() {
+      termOverlay.classList.add('show');
+      termInput.focus();
+      if (!termBody.dataset.inited) {
+        printLine("Minecraft Terminal v1.0 — type 'help' to begin.");
+        termBody.dataset.inited = '1';
+      }
     }
-  }).catch(error => {
-    statusError.textContent = "Transmission failed. Please check your connection and try again!";
-    statusError.style.display = 'block';
-  });
-});
+    function openTermLink() { openTerm(); }
+    function closeTerm() { termOverlay.classList.remove('show'); }
+    document.getElementById('termOpenLink').addEventListener('click', openTerm);
+    document.getElementById('termClose').addEventListener('click', closeTerm);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '`' || e.key === '~') { e.preventDefault(); termOverlay.classList.contains('show') ? closeTerm() : openTerm(); }
+      if (e.key === 'Escape') { closeTerm(); }
+    });
 
-/* ---------------- terminal ---------------- */
-const termOverlay = document.getElementById('termOverlay');
-const termBody = document.getElementById('termBody');
-const termInput = document.getElementById('termInput');
+    function printLine(text, cls) {
+      const d = document.createElement('div');
+      if (cls) d.className = cls;
+      d.textContent = text;
+      termBody.appendChild(d);
+      termBody.scrollTop = termBody.scrollHeight;
+    }
 
-function openTerm(){
-  termOverlay.classList.add('show');
-  termInput.focus();
-  if(!termBody.dataset.inited){
-    printLine("Minecraft Terminal v1.0 — type 'help' to begin.");
-    termBody.dataset.inited='1';
-  }
-}
-function openTermLink(){ openTerm(); }
-function closeTerm(){ termOverlay.classList.remove('show'); }
-document.getElementById('termOpenLink').addEventListener('click', openTerm);
-document.getElementById('termClose').addEventListener('click', closeTerm);
-window.addEventListener('keydown',(e)=>{
-  if(e.key==='`' || e.key==='~'){ e.preventDefault(); termOverlay.classList.contains('show') ? closeTerm() : openTerm(); }
-  if(e.key==='Escape'){ closeTerm(); }
-});
+    const commands = {
+      help: () => [
+        "Available Commands",
+        "",
+        "about", "skills", "projects", "resume", "github", "linkedin", "contact", "certifications", "aws"
+      ].join("\n"),
+      about: () => "Princess Jelyn Mae Villaraiz — BS Information Systems, Mapúa Malayan Colleges of Mindanao.\nFull Stack Developer · UI/UX Designer · Cloud Enthusiast.",
+      skills: () => skills.map(s => `${s.name} — Lv.${s.level}`).join("\n"),
+      projects: () => "Loading Quest Log...\n\n" + quests.map(q => "✓ " + q.title).join("\n"),
+      resume: () => { window.open('RESUME.pdf', '_blank'); return "Opening resume download..."; },
+      github: () => { window.open('https://github.com/pjmVillaraiz', '_blank'); return "Opening GitHub profile..."; },
+      linkedin: () => { window.open('https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/', '_blank'); return "Opening LinkedIn profile..."; },
+      contact: () => "Scroll to 'The Final Portal' section to send a message, or run 'linkedin'.",
+      certifications: () => achievements.map(a => `${a.title} (${a.tag}) — ${a.xp}`).join("\n"),
+      aws: () => "AWS Cloud Academy — EC2 · IAM · S3 · Cloud Computing — Unlocked.",
+    };
+    commands["hire princess"] = () => [
+      "Searching candidate...",
+      "",
+      "██████████████████",
+      "",
+      "SUCCESS!",
+      "",
+      "Candidate has:",
+      "✓ AWS Knowledge",
+      "✓ Full Stack Experience",
+      "✓ AI Integration",
+      "✓ UI/UX Skills",
+      "✓ Cloud Fundamentals",
+      "✓ Problem Solving",
+      "",
+      "Recommendation:",
+      "Interview this player."
+    ].join("\n");
 
-function printLine(text, cls){
-  const d = document.createElement('div');
-  if(cls) d.className = cls;
-  d.textContent = text;
-  termBody.appendChild(d);
-  termBody.scrollTop = termBody.scrollHeight;
-}
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const raw = termInput.value.trim();
+        if (!raw) return;
+        printLine("> " + raw, "cmdline");
+        const key = raw.toLowerCase();
+        if (commands[key]) {
+          printLine(commands[key]());
+        } else {
+          printLine(`Unknown command: "${raw}". Type "help" for a list.`);
+        }
+        termInput.value = '';
+      }
+    });
 
-const commands = {
-  help:()=> [
-    "Available Commands",
-    "",
-    "about","skills","projects","resume","github","linkedin","contact","certifications","aws"
-  ].join("\n"),
-  about:()=> "Princess Jelyn Mae Villaraiz — BS Information Systems, Mapúa Malayan Colleges of Mindanao.\nFull Stack Developer · UI/UX Designer · Cloud Enthusiast.",
-  skills:()=> skills.map(s=>`${s.name} — Lv.${s.level}`).join("\n"),
-  projects:()=> "Loading Quest Log...\n\n" + quests.map(q=>"✓ "+q.title).join("\n"),
-  resume:()=> { window.open('RESUME.pdf', '_blank'); return "Opening resume download..."; },
-  github:()=> { window.open('https://github.com/pjmVillaraiz', '_blank'); return "Opening GitHub profile..."; },
-  linkedin:()=> { window.open('https://www.linkedin.com/in/princess-jelyn-mae-villaraiz-b11901354/', '_blank'); return "Opening LinkedIn profile..."; },
-  contact:()=> "Scroll to 'The Final Portal' section to send a message, or run 'linkedin'.",
-  certifications:()=> achievements.map(a=>`${a.title} (${a.tag}) — ${a.xp}`).join("\n"),
-  aws:()=> "AWS Cloud Academy — EC2 · IAM · S3 · Cloud Computing — Unlocked.",
-};
-commands["hire princess"] = ()=> [
-  "Searching candidate...",
-  "",
-  "██████████████████",
-  "",
-  "SUCCESS!",
-  "",
-  "Candidate has:",
-  "✓ AWS Knowledge",
-  "✓ Full Stack Experience",
-  "✓ AI Integration",
-  "✓ UI/UX Skills",
-  "✓ Cloud Fundamentals",
-  "✓ Problem Solving",
-  "",
-  "Recommendation:",
-  "Interview this player."
-].join("\n");
+    /* ---------------- theme toggle script ---------------- */
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    function setTheme(isLight) {
+      if (isLight) {
+        document.body.classList.add('light-theme');
+        themeToggleBtn.textContent = "☾ DARK";
+        themeToggleBtn.style.background = "var(--diamond)";
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light-theme');
+        themeToggleBtn.textContent = "☀ LIGHT";
+        themeToggleBtn.style.background = "var(--gold)";
+        localStorage.setItem('theme', 'dark');
+      }
+    }
 
-termInput.addEventListener('keydown',(e)=>{
-  if(e.key==='Enter'){
-    const raw = termInput.value.trim();
-    if(!raw) return;
-    printLine("> "+raw, "cmdline");
-    const key = raw.toLowerCase();
-    if(commands[key]){
-      printLine(commands[key]());
+    themeToggleBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.contains('light-theme');
+      setTheme(!isLight);
+    });
+
+    // Load theme on startup
+    const savedThemeSetting = localStorage.getItem('theme');
+    if (savedThemeSetting === 'light') {
+      setTheme(true);
     } else {
-      printLine(`Unknown command: "${raw}". Type "help" for a list.`);
+      setTheme(false);
     }
-    termInput.value='';
-  }
-});
-
-/* ---------------- theme toggle script ---------------- */
-const themeToggleBtn = document.getElementById('themeToggleBtn');
-function setTheme(isLight) {
-  if (isLight) {
-    document.body.classList.add('light-theme');
-    themeToggleBtn.textContent = "☾ DARK";
-    themeToggleBtn.style.background = "var(--diamond)";
-    localStorage.setItem('theme', 'light');
-  } else {
-    document.body.classList.remove('light-theme');
-    themeToggleBtn.textContent = "☀ LIGHT";
-    themeToggleBtn.style.background = "var(--gold)";
-    localStorage.setItem('theme', 'dark');
-  }
-}
-
-themeToggleBtn.addEventListener('click', () => {
-  const isLight = document.body.classList.contains('light-theme');
-  setTheme(!isLight);
-});
-
-// Load theme on startup
-const savedThemeSetting = localStorage.getItem('theme');
-if (savedThemeSetting === 'light') {
-  setTheme(true);
-} else {
-  setTheme(false);
-}
-</script>
+  </script>
 </body>
+
 </html>
