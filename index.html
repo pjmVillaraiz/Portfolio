@@ -63,12 +63,16 @@
       /* light parchment */
     }
 
+    /* ---- Base resets (mobile-first) ---- */
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
       scroll-behavior: smooth;
+      /* compensate for fixed topbar on anchor navigation */
+      scroll-padding-top: 52px;
     }
 
     body {
@@ -93,7 +97,8 @@
     .wrap {
       max-width: 980px;
       margin: 0 auto;
-      padding: 20px 16px 100px;
+      /* fluid horizontal padding: 12px on mobile → 24px on wide screens */
+      padding: 20px clamp(12px, 4vw, 24px) 100px;
     }
 
     /* ---------------- pixel panel / button system ---------------- */
@@ -113,13 +118,20 @@
       color: var(--text-dark);
       background: var(--gold);
       border: 3px solid #000;
+      /* minimum 44px touch target height (WCAG 2.5.5) */
       padding: 11px 14px;
+      min-height: 44px;
       box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.6), inset -2px -2px 0 rgba(0, 0, 0, 0.35), 4px 4px 0 rgba(0, 0, 0, 0.6);
       cursor: pointer;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: transform .05s linear;
       margin: 4px 6px 4px 0;
+      /* eliminate 300ms tap delay on touch devices */
+      touch-action: manipulation;
+      user-select: none;
     }
 
     .btn:hover {
@@ -184,6 +196,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
       padding: 8px 14px;
     }
 
@@ -191,11 +204,23 @@
       font-family: 'Press Start 2P';
       font-size: 11px;
       color: var(--gold);
+      /* prevent brand from shrinking on tiny screens */
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
+    /* hide terminal hint on mobile — too narrow */
     .topbar .hint {
+      display: none;
       font-size: 15px;
       color: var(--text-muted);
+    }
+
+    /* show hint at tablet breakpoint (480px+) */
+    @media (min-width: 480px) {
+      .topbar .hint {
+        display: block;
+      }
     }
 
     .topbar .hint kbd {
@@ -217,7 +242,8 @@
         repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 8px, transparent 8px 16px);
       border: 4px solid #000;
       box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
-      padding: 30px 22px 24px;
+      /* fluid horizontal padding on mobile */
+      padding: 28px clamp(14px, 4vw, 22px) 24px;
       position: relative;
       margin-top: 10px;
     }
@@ -234,22 +260,56 @@
       border-bottom: 4px solid #000;
     }
 
+    /* mobile-first: avatar + text stacked vertically, centered */
     .hero-grid {
       display: flex;
-      gap: 26px;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
+      gap: 18px;
+      text-align: center;
     }
 
+    /* tablet and up: side-by-side */
+    @media (min-width: 480px) {
+      .hero-grid {
+        flex-direction: row;
+        align-items: center;
+        gap: 22px;
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        gap: 26px;
+      }
+    }
+
+    /* mobile avatar: slightly smaller */
     .avatar {
-      width: 110px;
-      height: 110px;
+      width: 90px;
+      height: 90px;
       flex: none;
       border: 4px solid #000;
       position: relative;
       box-shadow: inset 3px 3px 0 rgba(255, 255, 255, 0.25), inset -3px -3px 0 rgba(0, 0, 0, 0.4), 4px 4px 0 rgba(0, 0, 0, 0.55);
       background: #111;
       overflow: hidden;
+    }
+
+    /* tablet+: full size avatar */
+    @media (min-width: 480px) {
+      .avatar {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
+    .avatar img,
+    .avatar picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .avatar img {
@@ -270,18 +330,31 @@
       box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
     }
 
+    /* mobile: smaller headline to prevent overflow */
     .pname {
-      font-size: 19px;
+      font-size: 15px;
       color: var(--gold);
       text-shadow: 2px 2px 0 #000;
       margin: 0 0 6px;
     }
 
+    @media (min-width: 480px) {
+      .pname { font-size: 17px; }
+    }
+
+    @media (min-width: 768px) {
+      .pname { font-size: 19px; }
+    }
+
     .proles {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--text-light);
       opacity: .9;
       margin: 0 0 12px;
+    }
+
+    @media (min-width: 480px) {
+      .proles { font-size: 17px; }
     }
 
     .proles .sep {
@@ -326,13 +399,38 @@
 
     .hero-actions {
       margin-top: 18px;
+      /* on mobile center the buttons when text is centered */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    @media (min-width: 480px) {
+      .hero-actions {
+        justify-content: flex-start;
+      }
     }
 
     /* ---------------- stats ---------------- */
+    /* mobile: tighter minmax so 2 columns fit on 375px */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+
+    @media (min-width: 480px) {
+      .stats-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
     }
 
     .stat {
@@ -379,15 +477,17 @@
       color: var(--dirt-dark);
     }
 
+    /* mobile-first: single column by default */
     .two-col {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
-    @media(max-width:720px) {
+    /* tablet+ (600px): two columns */
+    @media (min-width: 600px) {
       .two-col {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1.3fr 1fr;
       }
     }
 
@@ -411,10 +511,18 @@
     }
 
     /* ---------------- inventory / skills ---------------- */
+    /* mobile: slightly smaller slots so more fit per row on 375px */
     .inventory {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+      gap: 8px;
+    }
+
+    @media (min-width: 480px) {
+      .inventory {
+        grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+        gap: 10px;
+      }
     }
 
     .slot {
@@ -430,6 +538,8 @@
       cursor: pointer;
       position: relative;
       padding: 6px;
+      /* instant touch response */
+      touch-action: manipulation;
     }
 
     .slot:hover {
@@ -557,13 +667,29 @@
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
+      /* center on mobile when the grid wraps */
+      justify-content: center;
+    }
+
+    @media (min-width: 600px) {
+      .craft-row {
+        justify-content: flex-start;
+      }
     }
 
     /* ---------------- achievements ---------------- */
+    /* mobile: narrower minmax so single column doesn't overflow */
     .ach-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .ach-grid {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 14px;
+      }
     }
 
     .ach {
@@ -579,6 +705,7 @@
       cursor: pointer;
       transition: transform 0.1s ease;
       min-height: 86px;
+      touch-action: manipulation;
     }
 
     .ach:hover {
@@ -817,8 +944,14 @@
     /* ---------------- why hire grid ---------------- */
     .why-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 10px;
+    }
+
+    @media (min-width: 480px) {
+      .why-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
     }
 
     .why-card {
@@ -831,15 +964,17 @@
     }
 
     /* ---------------- recruiter dashboard ---------------- */
+    /* mobile-first: single column by default */
     .dash {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
-    @media(max-width:640px) {
+    /* tablet+ (480px): two columns */
+    @media (min-width: 480px) {
       .dash {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -894,6 +1029,7 @@
       border: 6px solid #1a1a1a;
       box-shadow: 0 0 24px 6px rgba(140, 60, 220, 0.55);
       animation: portalPulse 2.4s ease-in-out infinite;
+      touch-action: manipulation;
     }
 
     @keyframes portalPulse {
@@ -1050,26 +1186,47 @@
 
 <body>
 
-  <div class="topbar">
-    <div class="brand">PJM.exe</div>
-    <div style="display:flex; align-items:center; gap:16px;">
-      <button id="themeToggleBtn" class="btn"
-        style="padding:4px 8px; font-size:10px; margin:0; line-height:1; min-width:80px; text-align:center;">☀
-        LIGHT</button>
-      <div class="hint">Press <kbd>~</kbd> or <span id="termOpenLink"
-          style="text-decoration:underline;cursor:pointer;">click here</span> to open terminal</div>
-    </div>
-  </div>
+  <!-- Skip-to-content link for keyboard/screen-reader users -->
+  <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px;top:4px;z-index:999;padding:8px 16px;background:var(--gold);color:#000;font-family:'Press Start 2P';font-size:10px;" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
 
-  <div class="wrap">
+  <header role="banner">
+    <nav class="topbar" aria-label="Site navigation">
+      <div class="brand" aria-label="PJM Portfolio">PJM.exe</div>
+      <div style="display:flex; align-items:center; gap:10px; flex-shrink:0;">
+        <button id="themeToggleBtn" class="btn" aria-label="Toggle light/dark theme"
+          style="padding:4px 8px; font-size:10px; margin:0; min-height:36px; min-width:80px;">☀
+          LIGHT</button>
+        <div class="hint">Press <kbd>~</kbd> or <span id="termOpenLink"
+            style="text-decoration:underline;cursor:pointer;" role="button" tabindex="0"
+            aria-label="Open terminal">click here</span> to open terminal</div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="wrap">
 
     <!-- HERO / PLAYER PROFILE -->
-    <section class="hero reveal">
+    <section class="hero reveal" aria-label="Player profile">
       <div class="hero-grid">
+        <!-- Avatar: <picture> for proper srcset/sizes and LCP optimization -->
         <div class="avatar">
-          <img src="profile.jpg" alt="Princess Jelyn Mae Villaraiz">
+          <picture>
+            <source
+              srcset="profile.jpg"
+              type="image/jpeg"
+              media="(min-width: 480px)"
+              sizes="110px">
+            <img
+              src="profile.jpg"
+              alt="Princess Jelyn Mae Villaraiz — Software Developer"
+              width="110"
+              height="110"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high">
+          </picture>
         </div>
-        <div style="flex:1; min-width:240px;">
+        <div style="flex:1; min-width:0;">
           <div class="level-badge">Level 21 · Software Developer</div>
           <h1 class="pname">Princess Jelyn Mae Villaraiz</h1>
           <p class="proles">Cloud Enthusiast <span class="sep">/</span> Full Stack Developer <span class="sep">/</span>
@@ -1105,7 +1262,7 @@
       <div class="stats-grid">
         <div class="stat">
           <div class="icon">
-            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;" aria-hidden="true" focusable="false">
               <path d="M1,2 h14 v12 h-14 z" fill="#7a4a2a" />
               <path d="M0,1 h16 v14 h-16 z" fill="none" stroke="#000" stroke-width="1" />
               <path d="M0,5 h16" stroke="#000" stroke-width="1" />
@@ -1118,7 +1275,7 @@
         </div>
         <div class="stat">
           <div class="icon">
-            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;" aria-hidden="true" focusable="false">
               <path d="M7,1h2v2h2v2h2v2h-2v2h-2v2h-2v-2h-2v-2h-2v-2h2v-2h2v-2z" fill="#ffcc33" stroke="#000"
                 stroke-width="1" />
               <path d="M6,5h4v4h-4z" fill="#ffeb99" />
@@ -1129,7 +1286,7 @@
         </div>
         <div class="stat">
           <div class="icon">
-            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;" aria-hidden="true" focusable="false">
               <path d="M9,2 h5 v2 h-1 v1 h-1 v-1 h-3 z M11,1 h2 v1 h-2 z M6,5 h3 v1 h-3 z" fill="#c0c0c0" />
               <path d="M2,13 l8,-8" stroke="#7a4a2a" stroke-width="1.5" />
               <path d="M1,14 l2,-2" stroke="#5c3a21" stroke-width="1.5" />
@@ -1143,7 +1300,7 @@
         </div>
         <div class="stat">
           <div class="icon">
-            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;">
+            <svg viewBox="0 0 16 16" width="36" height="36" style="shape-rendering: crispEdges;" aria-hidden="true" focusable="false">
               <path d="M4,9 h8 v3 h-8 z M2,7 h12 v2 h-12 z M3,5 h10 v2 h-10 z M6,3 h4 v2 h-4 z" fill="#55e0d0"
                 stroke="#000" stroke-width="1" />
               <path d="M5,6 h6 v2 h-6 z" fill="#eafffb" />
@@ -1155,7 +1312,7 @@
         <div class="stat">
           <div class="icon">
             <svg viewBox="0 0 9 9" width="36" height="36"
-              style="shape-rendering: crispEdges; image-rendering: pixelated;">
+              style="shape-rendering: crispEdges; image-rendering: pixelated;" aria-hidden="true" focusable="false">
               <path
                 d="M1,0 h2 M5,0 h2 M0,1 h1 M3,1 h2 M7,1 h1 M0,2 v3 M8,2 v3 M1,5 h1 M7,5 h1 M2,6 h1 M6,6 h1 M3,7 h2 M4,8 h1"
                 stroke="#000" fill="none" />
@@ -1326,17 +1483,17 @@
       </div>
     </section>
 
-    <footer class="reveal">
+    <footer class="reveal" role="contentinfo">
       MISSION COMPLETE?<br>
       Thanks for exploring my Minecraft world. Let's build something amazing together.<br><br>
       Status: <span style="color:var(--xp);">Available for Internship</span>
       <div class="footer-badges">
         <span>HTML</span><span>CSS</span><span>JavaScript</span>
       </div>
-      <div style="margin-top:10px;">© 2026 Princess Jelyn Mae Villaraiz — built with <span class="heart">♥</span></div>
+      <div style="margin-top:10px;">© 2026 Princess Jelyn Mae Villaraiz — built with <span class="heart" aria-label="love">♥</span></div>
     </footer>
 
-  </div>
+  </main>
 
   <!-- CERTIFICATE LIGHTBOX MODAL -->
   <div class="cert-modal" id="certModal">
@@ -1713,7 +1870,12 @@
     }
     function openTermLink() { openTerm(); }
     function closeTerm() { termOverlay.classList.remove('show'); }
-    document.getElementById('termOpenLink').addEventListener('click', openTerm);
+    const termOpenLink = document.getElementById('termOpenLink');
+    termOpenLink.addEventListener('click', openTerm);
+    // keyboard activation for span[role="button"]
+    termOpenLink.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openTerm(); }
+    });
     document.getElementById('termClose').addEventListener('click', closeTerm);
     window.addEventListener('keydown', (e) => {
       if (e.key === '`' || e.key === '~') { e.preventDefault(); termOverlay.classList.contains('show') ? closeTerm() : openTerm(); }
